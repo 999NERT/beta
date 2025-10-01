@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const smoke = document.getElementById('smoke');
     const fontFamily = document.getElementById('fontFamily');
     const downloadSize = document.getElementById('downloadSize');
-    const boldKiller = document.getElementById('boldKiller');
-    const boldKilled = document.getElementById('boldKilled');
+    const boldFont = document.getElementById('boldFont');
     
     // Funkcja aktualizująca podgląd
     function updatePreview() {
@@ -30,23 +29,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const noscopeValue = noscope.checked;
         const smokeValue = smoke.checked;
         const fontFamilyValue = fontFamily.value;
-        const boldKillerValue = boldKiller.checked;
-        const boldKilledValue = boldKilled.checked;
+        const boldFontValue = boldFont.checked;
         
         // Tworzenie HTML dla killfeeda
         let killfeedHTML = '';
+        let boldClass = boldFontValue ? ' bold-killfeed' : '';
         
         if (feedTypeValue === 'killFeed') {
-            killfeedHTML = `<div class="killFeed" style="font-family: '${fontFamilyValue}', sans-serif;">`;
+            killfeedHTML = `<div class="killFeed${boldClass}" style="font-family: '${fontFamilyValue}', sans-serif;">`;
         } else {
-            killfeedHTML = `<div class="killFeedDead" style="font-family: '${fontFamilyValue}', sans-serif;">`;
+            killfeedHTML = `<div class="killFeedDead${boldClass}" style="font-family: '${fontFamilyValue}', sans-serif;">`;
         }
         
-        // Dodanie zabójcy z opcją pogrubienia
+        // Dodanie zabójcy
         if (killerTeamValue === 'CT') {
-            killfeedHTML += `<a href="" class="killerCT ${boldKillerValue ? 'bold' : ''}">${killerNameValue}</a>`;
+            killfeedHTML += `<a href="" class="killerCT">${killerNameValue}</a>`;
         } else {
-            killfeedHTML += `<a href="" class="killerTT ${boldKillerValue ? 'bold' : ''}">${killerNameValue}</a>`;
+            killfeedHTML += `<a href="" class="killerTT">${killerNameValue}</a>`;
         }
         
         // Dodanie broni
@@ -70,11 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
             killfeedHTML += `<div class="hs"></div>`;
         }
         
-        // Dodanie ofiary z opcją pogrubienia
+        // Dodanie ofiary
         if (killedTeamValue === 'CT') {
-            killfeedHTML += `<a href="" class="killedCT ${boldKilledValue ? 'bold' : ''}">${killedNameValue}</a>`;
+            killfeedHTML += `<a href="" class="killedCT">${killedNameValue}</a>`;
         } else {
-            killfeedHTML += `<a href="" class="killedTT ${boldKilledValue ? 'bold' : ''}">${killedNameValue}</a>`;
+            killfeedHTML += `<a href="" class="killedTT">${killedNameValue}</a>`;
         }
         
         killfeedHTML += `</div>`;
@@ -129,8 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dodanie event listenerów do wszystkich elementów formularza
     const formElements = [
         feedType, killerName, killerTeam, killedName, killedTeam, weapon, 
-        headshot, wallbang, noscope, smoke, fontFamily, downloadSize,
-        boldKiller, boldKilled
+        headshot, wallbang, noscope, smoke, fontFamily, downloadSize, boldFont
     ];
     
     formElements.forEach(element => {
