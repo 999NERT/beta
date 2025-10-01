@@ -1,436 +1,582 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+:root {
+    --primary-aqua: #00f5ff;
+    --primary-dark: #0a0a14;
+    --secondary-dark: #121225;
+    --accent-blue: #0066ff;
+    --text-light: #e0f8ff;
+    --ct-color: #71A6FF;
+    --tt-color: #ECCE51;
+    --success: #00cc99;
+    --danger: #ff3366;
+}
 
-        body {
-            font-family: 'Bebas Neue', cursive;
-            background: #0d1b2a;
-            color: #fff;
-            padding: 20px;
-            line-height: 1.6;
-        }
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+    color: var(--text-light);
+    padding: 20px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(10, 10, 20, 0.7);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
 
-        h1 {
-            font-size: 3rem;
-            color: #ff4655;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 10px;
-        }
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-aqua), transparent);
+}
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--primary-aqua), var(--accent-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
 
-        .main-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
+.subtitle {
+    font-size: 1.3rem;
+    color: rgba(224, 248, 255, 0.7);
+    margin-bottom: 10px;
+    font-weight: 300;
+}
 
-        .controls {
-            flex: 1;
-            min-width: 300px;
-            background: #1b2735;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
 
-        .preview {
-            flex: 1;
-            min-width: 300px;
-            background: #1b2735;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+.controls {
+    flex: 1;
+    min-width: 350px;
+    background: rgba(18, 18, 37, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
 
-        .control-group {
-            margin-bottom: 20px;
-        }
+.preview {
+    flex: 1;
+    min-width: 350px;
+    background: rgba(18, 18, 37, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
 
-        h2 {
-            font-size: 1.5rem;
-            color: #ff4655;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #2a3a4d;
-            padding-bottom: 5px;
-        }
+.control-group {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
+.control-group:last-child {
+    border-bottom: none;
+}
 
-        input[type="text"], select {
-            width: 100%;
-            padding: 10px;
-            background: #2a3a4d;
-            border: 1px solid #3a4a5d;
-            border-radius: 5px;
-            color: #fff;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 1.1rem;
-        }
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-aqua);
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(0, 245, 255, 0.3);
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(10, 10, 20, 0.7);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
 
-        .checkbox-item input {
-            width: auto;
-        }
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-aqua);
+    box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.2);
+}
 
-        button {
-            background: #ff4655;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 1.2rem;
-            transition: background 0.3s;
-            width: 100%;
-            margin-top: 10px;
-        }
+input[type="number"] {
+    width: 30%;
+    display: inline-block;
+    margin-right: 3%;
+}
 
-        button:hover {
-            background: #e03e4c;
-        }
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
 
-        .preview-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #ff4655;
-            text-align: center;
-        }
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 10, 20, 0.5);
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    transition: all 0.3s ease;
+}
 
-        /* CSS dla killfeed z zadania */
-        a {
-            text-decoration: none;
-        }
+.checkbox-item:hover {
+    border-color: var(--primary-aqua);
+    background: rgba(0, 245, 255, 0.05);
+}
 
-        .killFeed {
-            margin-top: 15px;
-            min-width: 100px;
-            position: relative;
-            display: inline-block;
-            height: 39px;
-            background: #00070d;
-            border-radius: 10px;
-            padding: 0 10px;
-            transform: scale(1);
-            transition: .1s;
-        }
+.checkbox-item input {
+    width: auto;
+    margin: 0;
+}
 
-        .killFeedDead {
-            margin-top: 15px;
-            min-width: 100px;
-            position: relative;
-            display: inline-block;
-            height: 37px;
-            background: #8B0000;
-            border-radius: 6px;
-            padding: 0 10px;
-            transform: scale(1);
-            transition: .1s;
-        }
+.position-controls {
+    margin-top: 15px;
+}
 
-        .killFeed:hover {
-            transform: scale(1.01);
-            box-shadow: 0 0 10px rgba(111, 0, 0, 0.5);
-        }
+.position-group {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: rgba(10, 10, 20, 0.5);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 245, 255, 0.1);
+}
 
-        .killFeedDead:hover {
-            transform: scale(1.01);
-            box-shadow: 0 0 10px rgba(111, 0, 0, 0.5);
-        }
+.position-group h4 {
+    color: var(--primary-aqua);
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+}
 
-        .killerCT {
-            color: #71A6FF;
-            line-height: 40px;
-            display: inline-block;
-            margin-right: 10px;
-            float: left;
-        }
+.position-inputs {
+    display: flex;
+    gap: 10px;
+}
 
-        .killerTT {
-            color: #ECCE51;
-            line-height: 40px;
-            display: inline-block;
-            margin-right: 10px;
-            float: left;
-        }
-        .killedTT {
-            margin-left: -2px;
-            color: #ECCE51;
-            line-height: 40px;
-            display: inline-block;
-            float: left;
-        }
+.position-inputs input {
+    flex: 1;
+    margin-bottom: 0;
+}
 
-        .killedCT {
-            margin-left: -2px;
-            color: #71A6FF;
-            line-height: 40px;
-            display: inline-block;
-            float: left;
-        }
+button {
+    background: linear-gradient(135deg, var(--primary-aqua) 0%, var(--accent-blue) 100%);
+    color: var(--primary-dark);
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
+}
 
-        .weapon {
-            float: left;
-        }
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 245, 255, 0.5);
+}
 
-        .weapon.tec9 {
-            margin: 8px 0px 0px -18px;
-            height: 26px;
-            width: 80px;
-            background: url(https://i.imgur.com/r9c3iUI.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+button:active {
+    transform: translateY(1px);
+}
 
-        .weapon.deagle {
-            margin: 7px 0px 0px -18px;
-            height: 26px;
-            width: 80px;
-            background: url(https://i.imgur.com/HOVQ8Jk.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.preview-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: var(--primary-aqua);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .weapon.m4a1s {
-            margin: 8px 8px 0px 0px;
-            height: 25px;
-            width: 80px;
-            background: url(https://i.imgur.com/Z1YR04z.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+/* CSS dla killfeed z zadania - ZMODERNIZOWANY */
+a {
+    text-decoration: none;
+}
 
-        .weapon.galil {
-            margin: 8px 8px 0px 0px;
-            height: 25px;
-            width: 80px;
-            background: url(https://i.imgur.com/CiqqMAZ.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.killFeed {
+    margin-top: 15px;
+    min-width: 100px;
+    position: relative;
+    display: inline-block;
+    height: 39px;
+    background: #00070d;
+    border-radius: 10px;
+    padding: 0 10px;
+    transform: scale(1);
+    transition: .1s;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+}
 
-        .weapon.ak47 {
-            margin: 8px 8px 0px 0px;
-            height: 25px;
-            width: 88px;
-            background: url(http://i.imgur.com/fZlAs4p.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.killFeedDead {
+    margin-top: 15px;
+    min-width: 100px;
+    position: relative;
+    display: inline-block;
+    height: 37px;
+    background: #8B0000;
+    border-radius: 6px;
+    padding: 0 10px;
+    transform: scale(1);
+    transition: .1s;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
 
-        .weapon.famas {
-            margin: 8px 8px 0px 0px;
-            height: 25px;
-            width: 70px;
-            background: url(https://i.imgur.com/ZGeKmW2.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.killFeed:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.7);
+}
 
-        .weapon.m4a4 {
-            margin: 6px 8px 0px 0px;
-            height: 25px;
-            width: 80px;
-            background: url(https://i.imgur.com/0D6YVWy.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.killFeedDead:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
 
-        .weapon.usp {
-            margin: 8px 0px 0px -10px;
-            height: 25px;
-            width: 80px;
-            background: url(http://i.imgur.com/dT1EGjU.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.killerCT {
+    color: var(--ct-color);
+    line-height: 40px;
+    display: inline-block;
+    margin-right: 10px;
+    float: left;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(113, 166, 255, 0.5);
+}
 
-        .weapon.bfly {
-            margin: 8px 0px 0px 0px;
-            height: 30px;
-            width: 80px;
-            background: url(https://i.imgur.com/SpuRMUg.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.killerTT {
+    color: var(--tt-color);
+    line-height: 40px;
+    display: inline-block;
+    margin-right: 10px;
+    float: left;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(236, 206, 81, 0.5);
+}
 
-        .weapon.knifect {
-            margin: 8px 0px 0px 0px;
-            height: 25px;
-            width: 80px;
-            background: url(https://i.imgur.com/bhzclsQ.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.killedTT {
+    margin-left: -2px;
+    color: var(--tt-color);
+    line-height: 40px;
+    display: inline-block;
+    float: left;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(236, 206, 81, 0.5);
+}
 
-        .weapon.fire {
-            margin: 8px 0px 0px 0px;
-            height: 25px;
-            width: 80px;
-            background: url(https://i.imgur.com/fMJt6CO.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.killedCT {
+    margin-left: -2px;
+    color: var(--ct-color);
+    line-height: 40px;
+    display: inline-block;
+    float: left;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(113, 166, 255, 0.5);
+}
 
-        .weapon.glock {
-            margin: 8px -8px 0px -24px;
-            height: 25px;
-            width: 80px;
-            background: url(https://i.imgur.com/oGoKoAT.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.weapon {
+    float: left;
+}
 
-        .weapon.p250 {
-            margin: 7px 4px 8px -2px;
-            height: 29px;
-            width: 39px;
-            background: url(https://i.imgur.com/zCq4FjH.png) no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.weapon.tec9 {
+    margin: 8px 0px 0px -18px;
+    height: 26px;
+    width: 80px;
+    background: url(https://i.imgur.com/r9c3iUI.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .weapon.awp {
-            margin: 8px 16px 0px 0px;
-            height: 25px;
-            width: 80px;
-            background: url("http://i.imgur.com/i5Euh7o.png") no-repeat;
-            background-size: cover;
-            float: left;
-        }
+.weapon.deagle {
+    margin: 7px 0px 0px -18px;
+    height: 26px;
+    width: 80px;
+    background: url(https://i.imgur.com/HOVQ8Jk.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .headshot.glock {
-            margin: 8px 0px 0px -12px;
-            height: 28px;
-            width: 28px;
-            background-image: url(https://www.steamid.co.uk/images/headshot.png);
-            background-size: cover;
-            float: left;
-        }
+.weapon.m4a1s {
+    margin: 8px 8px 0px 0px;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/Z1YR04z.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .headshot.truetec9 {
-            margin: 8px 0px 0px -12px;
-            height: 28px;
-            width: 28px;
-            background-image: url(https://www.steamid.co.uk/images/headshot.png);
-            background-size: cover;
-            float: left;
-        }
+.weapon.galil {
+    margin: 8px 8px 0px 0px;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/CiqqMAZ.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .hs{
-            margin: 8px 4px 0px 0px;
-            height: 28px;
-            width: 28px;
-            background-image: url(https://i.imgur.com/Wmzf4nL_d.webp?maxwidth=760&fidelity=grand);
-            background-size: cover;
-            float: left;
-        }
+.weapon.ak47 {
+    margin: 8px 8px 0px 0px;
+    height: 25px;
+    width: 88px;
+    background: url(http://i.imgur.com/fZlAs4p.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .smoke{
-            margin: 2px 12px 0px -12px;
-            height: 36px;
-            width: 36px;
-            background-image: url(https://i.imgur.com/dq4Xqua.png);
-            background-size: cover;
-            float: left;
-        }
+.weapon.famas {
+    margin: 8px 8px 0px 0px;
+    height: 25px;
+    width: 70px;
+    background: url(https://i.imgur.com/ZGeKmW2.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .wallbang.true {
-            float: left;
-        }
+.weapon.m4a4 {
+    margin: 6px 8px 0px 0px;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/0D6YVWy.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .wallbang {
-            margin: 6px 6px 0px 0px;
-            height: 28px;
-            width: 28px;
-            background: url(https://i.imgur.com/OsKtcbP.png);
-            background-size: cover;
-            float: left;
-        }
+.weapon.usp {
+    margin: 8px 0px 0px -10px;
+    height: 25px;
+    width: 80px;
+    background: url(http://i.imgur.com/dT1EGjU.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .noscope {
-            margin: 6px 6px 0px -12px;
-            height: 28px;
-            width: 28px;
-            background: url(https://i.imgur.com/9f6HQOS.png);
-            background-size: cover;
-            float: left;
-        }
+.weapon.bfly {
+    margin: 8px 0px 0px 0px;
+    height: 30px;
+    width: 80px;
+    background: url(https://i.imgur.com/SpuRMUg.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .smokeicon {
-            margin: 6px 5px 0px -5px;
-            height: 24px;
-            width: 24px;
-            background: url(https://i.imgur.com/BgKselu.png);
-            background-size: cover;
-            float: left;
-        }
+.weapon.knifect {
+    margin: 8px 0px 0px 0px;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/bhzclsQ.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        .code-output {
-            margin-top: 20px;
-            width: 100%;
-        }
+.weapon.fire {
+    margin: 8px 0px 0px 0px;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/fMJt6CO.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        textarea {
-            width: 100%;
-            height: 150px;
-            background: #2a3a4d;
-            color: #fff;
-            border: 1px solid #3a4a5d;
-            border-radius: 5px;
-            padding: 10px;
-            font-family: monospace;
-            resize: vertical;
-        }
+.weapon.glock {
+    margin: 8px -8px 0px -24px;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/oGoKoAT.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #2a3a4d;
-            color: #ccc;
-            font-size: 0.9rem;
-        }
+.weapon.p250 {
+    margin: 7px 4px 8px -2px;
+    height: 29px;
+    width: 39px;
+    background: url(https://i.imgur.com/zCq4FjH.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
 
-        @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-            }
-        }
+.weapon.awp {
+    margin: 8px 16px 0px 0px;
+    height: 25px;
+    width: 80px;
+    background: url(http://i.imgur.com/i5Euh7o.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.headshot.glock {
+    margin: 8px 0px 0px -12px;
+    height: 28px;
+    width: 28px;
+    background-image: url(https://www.steamid.co.uk/images/headshot.png);
+    background-size: cover;
+    float: left;
+}
+
+.headshot.truetec9 {
+    margin: 8px 0px 0px -12px;
+    height: 28px;
+    width: 28px;
+    background-image: url(https://www.steamid.co.uk/images/headshot.png);
+    background-size: cover;
+    float: left;
+}
+
+.hs{
+    margin: 8px 4px 0px 0px;
+    height: 28px;
+    width: 28px;
+    background-image: url(https://i.imgur.com/Wmzf4nL_d.webp?maxwidth=760&fidelity=grand);
+    background-size: cover;
+    float: left;
+}
+
+.smoke{
+    margin: 2px 12px 0px -12px;
+    height: 36px;
+    width: 36px;
+    background-image: url(https://i.imgur.com/dq4Xqua.png);
+    background-size: cover;
+    float: left;
+}
+
+.wallbang.true {
+    float: left;
+}
+
+.wallbang {
+    margin: 6px 6px 0px 0px;
+    height: 28px;
+    width: 28px;
+    background: url(https://i.imgur.com/OsKtcbP.png);
+    background-size: cover;
+    float: left;
+}
+
+.noscope {
+    margin: 6px 6px 0px -12px;
+    height: 28px;
+    width: 28px;
+    background: url(https://i.imgur.com/9f6HQOS.png);
+    background-size: cover;
+    float: left;
+}
+
+.smokeicon {
+    margin: 6px 5px 0px -5px;
+    height: 24px;
+    width: 24px;
+    background: url(https://i.imgur.com/BgKselu.png);
+    background-size: cover;
+    float: left;
+}
+
+.preview-info {
+    margin-top: 25px;
+    text-align: center;
+    color: rgba(224, 248, 255, 0.7);
+    font-size: 0.9rem;
+    padding: 15px;
+    background: rgba(10, 10, 20, 0.5);
+    border-radius: 8px;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 245, 255, 0.2);
+    color: rgba(224, 248, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .controls, .preview {
+        min-width: 100%;
+    }
+    
+    .position-inputs {
+        flex-direction: column;
+    }
+    
+    input[type="number"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
