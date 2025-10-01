@@ -5,11 +5,11 @@
 }
 
 :root {
-    --primary-blue: #2a7fff;
-    --primary-dark: #1a1a2e;
-    --secondary-dark: #16213e;
-    --accent-blue: #0066ff;
-    --text-light: #e6f7ff;
+    --primary-aqua: #00ffff;
+    --primary-dark: #0f1419;
+    --secondary-dark: #1a2129;
+    --accent-blue: #00aaff;
+    --text-aqua: #00ffff;
     --ct-color: #71A6FF;
     --tt-color: #ECCE51;
     --success: #00cc99;
@@ -19,65 +19,62 @@
 body {
     font-family: 'Exo 2', sans-serif;
     background: var(--primary-dark);
-    color: var(--text-light);
-    padding: 20px;
-    line-height: 1.6;
+    color: var(--text-aqua);
+    padding: 15px;
+    line-height: 1.5;
     min-height: 100vh;
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
 header {
     text-align: center;
-    margin-bottom: 40px;
-    padding: 20px;
+    margin-bottom: 30px;
+    padding: 15px;
     background: var(--secondary-dark);
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
 
 h1 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    color: var(--primary-blue);
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+    color: var(--primary-aqua);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    color: rgba(230, 247, 255, 0.7);
-    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: rgba(0, 255, 255, 0.7);
+    margin-bottom: 8px;
     font-weight: 300;
 }
 
 .main-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 40px;
+    gap: 25px;
+    margin-bottom: 30px;
 }
 
 .controls {
     flex: 1;
-    min-width: 350px;
+    min-width: 320px;
     background: var(--secondary-dark);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .preview {
     flex: 1;
-    min-width: 350px;
+    min-width: 320px;
     background: var(--secondary-dark);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,9 +82,9 @@ h1 {
 }
 
 .control-group {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(42, 127, 255, 0.1);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
 }
 
 .control-group:last-child {
@@ -96,62 +93,62 @@ h1 {
 
 h2 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.6rem;
-    color: var(--primary-blue);
-    margin-bottom: 20px;
-    padding-bottom: 10px;
+    font-size: 1.5rem;
+    color: var(--primary-aqua);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
+    margin-bottom: 6px;
+    font-size: 1rem;
     font-weight: 500;
-    color: var(--text-light);
+    color: var(--text-aqua);
 }
 
 input[type="text"], select {
     width: 100%;
-    padding: 12px 15px;
-    background: rgba(26, 26, 46, 0.7);
-    border: 1px solid rgba(42, 127, 255, 0.3);
-    border-radius: 6px;
-    color: var(--text-light);
+    padding: 10px 12px;
+    background: rgba(15, 20, 25, 0.7);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 5px;
+    color: var(--text-aqua);
     font-family: 'Exo 2', sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.2s ease;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 input[type="text"]:focus, select:focus {
     outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 2px rgba(42, 127, 255, 0.2);
+    border-color: var(--primary-aqua);
+    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2);
 }
 
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 10px;
+    gap: 12px;
+    margin-top: 8px;
 }
 
 .checkbox-item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(26, 26, 46, 0.5);
-    padding: 8px 15px;
-    border-radius: 6px;
-    border: 1px solid rgba(42, 127, 255, 0.1);
+    gap: 6px;
+    background: rgba(15, 20, 25, 0.5);
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 255, 255, 0.1);
     transition: all 0.2s ease;
 }
 
 .checkbox-item:hover {
-    border-color: var(--primary-blue);
-    background: rgba(42, 127, 255, 0.05);
+    border-color: var(--primary-aqua);
+    background: rgba(0, 255, 255, 0.05);
 }
 
 .checkbox-item input {
@@ -159,42 +156,42 @@ input[type="text"]:focus, select:focus {
     margin: 0;
 }
 
-button {
-    background: var(--primary-blue);
-    color: var(--text-light);
+.download-btn {
+    background: var(--primary-aqua);
+    color: var(--primary-dark);
     border: none;
-    padding: 14px 25px;
-    border-radius: 6px;
+    padding: 12px 20px;
+    border-radius: 5px;
     cursor: pointer;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     transition: all 0.2s ease;
     width: 100%;
-    margin-top: 10px;
+    margin: 20px 0 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-button:hover {
+.download-btn:hover {
     background: var(--accent-blue);
     transform: translateY(-2px);
 }
 
-button:active {
+.download-btn:active {
     transform: translateY(1px);
 }
 
 .preview-title {
-    font-size: 1.6rem;
-    margin-bottom: 25px;
-    color: var(--primary-blue);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-aqua);
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* CSS dla killfeed z zadania - ZOPTYMALIZOWANY */
+/* CSS dla killfeed z zadania - ZOPTYMALIZOWANY I POPRAWIONY */
 a {
     text-decoration: none;
 }
@@ -204,13 +201,15 @@ a {
     min-width: 100px;
     position: relative;
     display: inline-block;
-    height: 39px;
+    height: 45px;
     background: #00070d;
     border-radius: 10px;
-    padding: 0 10px;
+    padding: 0 12px;
     transform: scale(1);
     transition: .1s;
     font-family: 'Orbitron', sans-serif;
+    transform: scale(1.1);
+    margin: 20px 0;
 }
 
 .killFeedDead {
@@ -218,18 +217,20 @@ a {
     min-width: 100px;
     position: relative;
     display: inline-block;
-    height: 37px;
+    height: 43px;
     background: #8B0000;
     border-radius: 6px;
-    padding: 0 10px;
+    padding: 0 12px;
     transform: scale(1);
     transition: .1s;
     font-family: 'Orbitron', sans-serif;
+    transform: scale(1.1);
+    margin: 20px 0;
 }
 
 .killerCT {
     color: var(--ct-color);
-    line-height: 40px;
+    line-height: 45px;
     display: inline-block;
     margin-right: 10px;
     float: left;
@@ -238,7 +239,7 @@ a {
 
 .killerTT {
     color: var(--tt-color);
-    line-height: 40px;
+    line-height: 45px;
     display: inline-block;
     margin-right: 10px;
     float: left;
@@ -248,7 +249,7 @@ a {
 .killedTT {
     margin-left: -2px;
     color: var(--tt-color);
-    line-height: 40px;
+    line-height: 45px;
     display: inline-block;
     float: left;
     font-weight: 700;
@@ -257,7 +258,7 @@ a {
 .killedCT {
     margin-left: -2px;
     color: var(--ct-color);
-    line-height: 40px;
+    line-height: 45px;
     display: inline-block;
     float: left;
     font-weight: 700;
@@ -268,7 +269,7 @@ a {
 }
 
 .weapon.tec9 {
-    margin: 8px 0px 0px -18px;
+    margin: 10px 0 0 -15px;
     height: 26px;
     width: 80px;
     background: url(https://i.imgur.com/r9c3iUI.png) no-repeat;
@@ -277,7 +278,7 @@ a {
 }
 
 .weapon.deagle {
-    margin: 7px 0px 0px -18px;
+    margin: 9px 0 0 -15px;
     height: 26px;
     width: 80px;
     background: url(https://i.imgur.com/HOVQ8Jk.png) no-repeat;
@@ -286,7 +287,7 @@ a {
 }
 
 .weapon.m4a1s {
-    margin: 8px 8px 0px 0px;
+    margin: 10px 8px 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/Z1YR04z.png) no-repeat;
@@ -295,7 +296,7 @@ a {
 }
 
 .weapon.galil {
-    margin: 8px 8px 0px 0px;
+    margin: 10px 8px 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/CiqqMAZ.png) no-repeat;
@@ -304,7 +305,7 @@ a {
 }
 
 .weapon.ak47 {
-    margin: 8px 8px 0px 0px;
+    margin: 10px 8px 0 0;
     height: 25px;
     width: 88px;
     background: url(http://i.imgur.com/fZlAs4p.png) no-repeat;
@@ -313,7 +314,7 @@ a {
 }
 
 .weapon.famas {
-    margin: 8px 8px 0px 0px;
+    margin: 10px 8px 0 0;
     height: 25px;
     width: 70px;
     background: url(https://i.imgur.com/ZGeKmW2.png) no-repeat;
@@ -322,7 +323,7 @@ a {
 }
 
 .weapon.m4a4 {
-    margin: 6px 8px 0px 0px;
+    margin: 8px 8px 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/0D6YVWy.png) no-repeat;
@@ -331,7 +332,7 @@ a {
 }
 
 .weapon.usp {
-    margin: 8px 0px 0px -10px;
+    margin: 10px 0 0 -8px;
     height: 25px;
     width: 80px;
     background: url(http://i.imgur.com/dT1EGjU.png) no-repeat;
@@ -340,7 +341,7 @@ a {
 }
 
 .weapon.bfly {
-    margin: 8px 0px 0px 0px;
+    margin: 10px 0 0 0;
     height: 30px;
     width: 80px;
     background: url(https://i.imgur.com/SpuRMUg.png) no-repeat;
@@ -349,7 +350,7 @@ a {
 }
 
 .weapon.knifect {
-    margin: 8px 0px 0px 0px;
+    margin: 10px 0 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/bhzclsQ.png) no-repeat;
@@ -358,7 +359,7 @@ a {
 }
 
 .weapon.fire {
-    margin: 8px 0px 0px 0px;
+    margin: 10px 0 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/fMJt6CO.png) no-repeat;
@@ -367,7 +368,7 @@ a {
 }
 
 .weapon.glock {
-    margin: 8px -8px 0px -24px;
+    margin: 10px -6px 0 -20px;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/oGoKoAT.png) no-repeat;
@@ -376,7 +377,7 @@ a {
 }
 
 .weapon.p250 {
-    margin: 7px 4px 8px -2px;
+    margin: 9px 4px 0 -2px;
     height: 29px;
     width: 39px;
     background: url(https://i.imgur.com/zCq4FjH.png) no-repeat;
@@ -385,7 +386,7 @@ a {
 }
 
 .weapon.awp {
-    margin: 8px 16px 0px 0px;
+    margin: 10px 16px 0 0;
     height: 25px;
     width: 80px;
     background: url("http://i.imgur.com/i5Euh7o.png") no-repeat;
@@ -394,7 +395,7 @@ a {
 }
 
 .hs{
-    margin: 8px 4px 0px 0px;
+    margin: 10px 4px 0 0;
     height: 28px;
     width: 28px;
     background-image: url(https://i.imgur.com/Wmzf4nL_d.webp?maxwidth=760&fidelity=grand);
@@ -403,7 +404,7 @@ a {
 }
 
 .smoke{
-    margin: 2px 12px 0px -12px;
+    margin: 4px 12px 0 -10px;
     height: 36px;
     width: 36px;
     background-image: url(https://i.imgur.com/dq4Xqua.png);
@@ -412,7 +413,7 @@ a {
 }
 
 .wallbang {
-    margin: 6px 6px 0px 0px;
+    margin: 8px 6px 0 0;
     height: 28px;
     width: 28px;
     background: url(https://i.imgur.com/OsKtcbP.png);
@@ -421,7 +422,7 @@ a {
 }
 
 .noscope {
-    margin: 6px 6px 0px -12px;
+    margin: 8px 6px 0 -10px;
     height: 28px;
     width: 28px;
     background: url(https://i.imgur.com/9f6HQOS.png);
@@ -430,23 +431,23 @@ a {
 }
 
 .preview-info {
-    margin-top: 25px;
+    margin-top: 15px;
     text-align: center;
-    color: rgba(230, 247, 255, 0.7);
-    font-size: 0.9rem;
-    padding: 15px;
-    background: rgba(26, 26, 46, 0.5);
-    border-radius: 6px;
+    color: rgba(0, 255, 255, 0.7);
+    font-size: 0.85rem;
+    padding: 12px;
+    background: rgba(15, 20, 25, 0.5);
+    border-radius: 5px;
     width: 100%;
 }
 
 footer {
     text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(42, 127, 255, 0.2);
-    color: rgba(230, 247, 255, 0.6);
-    font-size: 0.9rem;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 255, 255, 0.2);
+    color: rgba(0, 255, 255, 0.6);
+    font-size: 0.85rem;
 }
 
 /* Responsywność */
@@ -456,10 +457,14 @@ footer {
     }
     
     h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .controls, .preview {
         min-width: 100%;
+    }
+    
+    .killFeed, .killFeedDead {
+        transform: scale(1);
     }
 }
