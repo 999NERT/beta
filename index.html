@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Killfeed CS:GO</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Generator Killfeed CS:GO 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Generator Killfeed CS:GO</h1>
-            <p class="subtitle">Stwórz własny killfeed do Counter-Strike: Global Offensive</p>
+            <h1>GENERATOR KILLFEED CS:GO</h1>
+            <p class="subtitle">Nowoczesne narzędzie do tworzenia killfeedów • 2025 Edition</p>
         </header>
         
         <div class="main-content">
@@ -90,8 +91,47 @@
                     </div>
                 </div>
                 
-                <button id="updatePreview">Aktualizuj Podgląd</button>
-                <button id="copyCode">Kopiuj Kod HTML</button>
+                <div class="control-group">
+                    <label for="fontFamily">Czcionka Killfeeda:</label>
+                    <select id="fontFamily">
+                        <option value="Orbitron">Orbitron (Nowoczesna)</option>
+                        <option value="Exo 2">Exo 2 (Czytelna)</option>
+                        <option value="Arial">Arial (Standard)</option>
+                        <option value="Courier New">Courier New (Monospace)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label>Pozycjonowanie Elementów:</label>
+                    <div class="position-controls">
+                        <div class="position-group">
+                            <h4>Broń</h4>
+                            <div class="position-inputs">
+                                <input type="number" id="weaponTop" value="8" placeholder="Top">
+                                <input type="number" id="weaponRight" value="8" placeholder="Right">
+                                <input type="number" id="weaponLeft" value="0" placeholder="Left">
+                            </div>
+                        </div>
+                        <div class="position-group">
+                            <h4>Headshot</h4>
+                            <div class="position-inputs">
+                                <input type="number" id="hsTop" value="8" placeholder="Top">
+                                <input type="number" id="hsRight" value="4" placeholder="Right">
+                                <input type="number" id="hsLeft" value="0" placeholder="Left">
+                            </div>
+                        </div>
+                        <div class="position-group">
+                            <h4>Wallbang</h4>
+                            <div class="position-inputs">
+                                <input type="number" id="wbTop" value="6" placeholder="Top">
+                                <input type="number" id="wbRight" value="6" placeholder="Right">
+                                <input type="number" id="wbLeft" value="0" placeholder="Left">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="downloadKillfeed">Pobierz Killfeed</button>
             </div>
             
             <div class="preview">
@@ -106,103 +146,17 @@
                     </div>
                 </div>
                 
-                <div class="code-output">
-                    <h2>Kod HTML</h2>
-                    <textarea id="htmlCode" readonly></textarea>
+                <div class="preview-info">
+                    <p>Killfeed zostanie automatycznie zaktualizowany po każdej zmianie ustawień</p>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p>Generator Killfeed CS:GO &copy; 2023 | Stworzone na podstawie dostarczonych materiałów</p>
+            <p>Generator Killfeed CS:GO 2025 &copy; | Nowoczesny design z opcjami personalizacji</p>
         </footer>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const updateButton = document.getElementById('updatePreview');
-            const copyButton = document.getElementById('copyCode');
-            const htmlCodeTextarea = document.getElementById('htmlCode');
-            
-            // Funkcja aktualizująca podgląd
-            function updatePreview() {
-                const feedType = document.getElementById('feedType').value;
-                const killerName = document.getElementById('killerName').value;
-                const killerTeam = document.getElementById('killerTeam').value;
-                const killedName = document.getElementById('killedName').value;
-                const killedTeam = document.getElementById('killedTeam').value;
-                const weapon = document.getElementById('weapon').value;
-                const headshot = document.getElementById('headshot').checked;
-                const wallbang = document.getElementById('wallbang').checked;
-                const noscope = document.getElementById('noscope').checked;
-                const smoke = document.getElementById('smoke').checked;
-                
-                // Tworzenie HTML dla killfeeda
-                let killfeedHTML = '';
-                
-                if (feedType === 'killFeed') {
-                    killfeedHTML = `<div class="killFeed">`;
-                } else {
-                    killfeedHTML = `<div class="killFeedDead">`;
-                }
-                
-                // Dodanie zabójcy
-                if (killerTeam === 'CT') {
-                    killfeedHTML += `<a href="" class="killerCT">${killerName}</a>`;
-                } else {
-                    killfeedHTML += `<a href="" class="killerTT">${killerName}</a>`;
-                }
-                
-                // Dodanie broni
-                killfeedHTML += `<div class="weapon ${weapon}"></div>`;
-                
-                // Dodanie dodatkowych elementów
-                if (headshot) {
-                    killfeedHTML += `<div class="hs"></div>`;
-                }
-                
-                if (wallbang) {
-                    killfeedHTML += `<div class="wallbang"></div>`;
-                }
-                
-                if (noscope) {
-                    killfeedHTML += `<div class="noscope"></div>`;
-                }
-                
-                if (smoke) {
-                    killfeedHTML += `<div class="smoke"></div>`;
-                }
-                
-                // Dodanie ofiary
-                if (killedTeam === 'CT') {
-                    killfeedHTML += `<a href="" class="killedCT">${killedName}</a>`;
-                } else {
-                    killfeedHTML += `<a href="" class="killedTT">${killedName}</a>`;
-                }
-                
-                killfeedHTML += `</div>`;
-                
-                // Aktualizacja podglądu
-                document.getElementById('killfeedPreview').innerHTML = killfeedHTML;
-                
-                // Aktualizacja kodu HTML
-                htmlCodeTextarea.value = killfeedHTML;
-            }
-            
-            // Funkcja kopiująca kod HTML
-            function copyHTMLCode() {
-                htmlCodeTextarea.select();
-                document.execCommand('copy');
-                alert('Kod HTML został skopiowany do schowka!');
-            }
-            
-            // Nasłuchiwanie zdarzeń
-            updateButton.addEventListener('click', updatePreview);
-            copyButton.addEventListener('click', copyHTMLCode);
-            
-            // Inicjalizacja podglądu
-            updatePreview();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
