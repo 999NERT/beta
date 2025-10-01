@@ -28,7 +28,7 @@
                 
                 <div class="control-group">
                     <label for="killerName">Nazwa Zabójcy:</label>
-                    <input type="text" id="killerName" value="Angelka">
+                    <input type="text" id="killerName" placeholder="Wpisz nazwę zabójcy">
                     
                     <label for="killerTeam">Drużyna Zabójcy:</label>
                     <select id="killerTeam">
@@ -39,7 +39,7 @@
                 
                 <div class="control-group">
                     <label for="killedName">Nazwa Ofiary:</label>
-                    <input type="text" id="killedName" value="ANN4">
+                    <input type="text" id="killedName" placeholder="Wpisz nazwę ofiary">
                     
                     <label for="killedTeam">Drużyna Ofiary:</label>
                     <select id="killedTeam">
@@ -98,7 +98,7 @@
                         <option value="Poppins">Poppins (Nowoczesna)</option>
                         <option value="Roboto Condensed">Roboto Condensed (Kompaktowa)</option>
                         <option value="Exo 2">Exo 2 (Czytelna)</option>
-                        <option value="Arial">Arial (Standard)</option>
+                        <option value="Arial" selected>Arial (Standard)</option>
                         <option value="Courier New">Courier New (Monospace)</option>
                     </select>
                     
@@ -123,11 +123,10 @@
                 <h2 class="preview-title">Podgląd Killfeeda</h2>
                 <div id="killfeedPreview">
                     <!-- Tutaj będzie renderowany podgląd killfeeda -->
-                    <div class="killFeed">
-                        <a href="" class="killerCT">Angelka</a>
+                    <div class="killFeed" style="font-family: Arial, sans-serif;">
+                        <a href="" class="killerCT">Zabójca</a>
                         <div class="weapon ak47"></div>
-                        <div class="hs"></div>
-                        <a href="" class="killedTT">ANN4</a>
+                        <a href="" class="killedTT">Ofiara</a>
                     </div>
                 </div>
                 
@@ -144,6 +143,8 @@
         </footer>
     </div>
 
+    <!-- Dodanie html2canvas z CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
