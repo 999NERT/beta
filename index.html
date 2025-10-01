@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generator Killfeed CS:GO 2025</title>
+    <title>KILLFEED 2025 @ 999NERTAjs </title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>GENERATOR KILLFEED CS:GO</h1>
+            <h1>GENERATOR KILLFEED</h1>
             <p class="subtitle">Nowoczesne narzędzie do tworzenia killfeedów • 2025 Edition</p>
         </header>
         
@@ -102,33 +101,13 @@
                 </div>
                 
                 <div class="control-group">
-                    <label>Pozycjonowanie Elementów:</label>
-                    <div class="position-controls">
-                        <div class="position-group">
-                            <h4>Broń</h4>
-                            <div class="position-inputs">
-                                <input type="number" id="weaponTop" value="8" placeholder="Top">
-                                <input type="number" id="weaponRight" value="8" placeholder="Right">
-                                <input type="number" id="weaponLeft" value="0" placeholder="Left">
-                            </div>
-                        </div>
-                        <div class="position-group">
-                            <h4>Headshot</h4>
-                            <div class="position-inputs">
-                                <input type="number" id="hsTop" value="8" placeholder="Top">
-                                <input type="number" id="hsRight" value="4" placeholder="Right">
-                                <input type="number" id="hsLeft" value="0" placeholder="Left">
-                            </div>
-                        </div>
-                        <div class="position-group">
-                            <h4>Wallbang</h4>
-                            <div class="position-inputs">
-                                <input type="number" id="wbTop" value="6" placeholder="Top">
-                                <input type="number" id="wbRight" value="6" placeholder="Right">
-                                <input type="number" id="wbLeft" value="0" placeholder="Left">
-                            </div>
-                        </div>
-                    </div>
+                    <label for="downloadSize">Rozmiar pobieranego obrazu:</label>
+                    <select id="downloadSize">
+                        <option value="1">Mały (1x)</option>
+                        <option value="2" selected>Średni (2x)</option>
+                        <option value="3">Duży (3x)</option>
+                        <option value="4">Bardzo duży (4x)</option>
+                    </select>
                 </div>
                 
                 <button id="downloadKillfeed">Pobierz Killfeed</button>
