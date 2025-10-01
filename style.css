@@ -1,470 +1,141 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary-aqua: #00ffff;
-    --primary-dark: #0f1419;
-    --secondary-dark: #1a2129;
-    --accent-blue: #00aaff;
-    --text-aqua: #00ffff;
-    --ct-color: #71A6FF;
-    --tt-color: #ECCE51;
-    --success: #00cc99;
-    --danger: #ff3366;
-}
-
-body {
-    font-family: 'Exo 2', sans-serif;
-    background: var(--primary-dark);
-    color: var(--text-aqua);
-    padding: 15px;
-    line-height: 1.5;
-    min-height: 100vh;
-}
-
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 15px;
-    background: var(--secondary-dark);
-    border-radius: 8px;
-}
-
-h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--primary-aqua);
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-}
-
-.subtitle {
-    font-size: 1.1rem;
-    color: rgba(0, 255, 255, 0.7);
-    margin-bottom: 8px;
-    font-weight: 300;
-}
-
-.main-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin-bottom: 30px;
-}
-
-.controls {
-    flex: 1;
-    min-width: 320px;
-    background: var(--secondary-dark);
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.preview {
-    flex: 1;
-    min-width: 320px;
-    background: var(--secondary-dark);
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.control-group {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-}
-
-.control-group:last-child {
-    border-bottom: none;
-}
-
-h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
-    color: var(--primary-aqua);
-    margin-bottom: 15px;
-    padding-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-aqua);
-}
-
-input[type="text"], select {
-    width: 100%;
-    padding: 10px 12px;
-    background: rgba(15, 20, 25, 0.7);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 5px;
-    color: var(--text-aqua);
-    font-family: 'Exo 2', sans-serif;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
-    margin-bottom: 12px;
-}
-
-input[type="text"]:focus, select:focus {
-    outline: none;
-    border-color: var(--primary-aqua);
-    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2);
-}
-
-.checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 8px;
-}
-
-.checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(15, 20, 25, 0.5);
-    padding: 6px 12px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 255, 255, 0.1);
-    transition: all 0.2s ease;
-}
-
-.checkbox-item:hover {
-    border-color: var(--primary-aqua);
-    background: rgba(0, 255, 255, 0.05);
-}
-
-.checkbox-item input {
-    width: auto;
-    margin: 0;
-}
-
-.download-btn {
-    background: var(--primary-aqua);
-    color: var(--primary-dark);
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    transition: all 0.2s ease;
-    width: 100%;
-    margin: 20px 0 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.download-btn:hover {
-    background: var(--accent-blue);
-    transform: translateY(-2px);
-}
-
-.download-btn:active {
-    transform: translateY(1px);
-}
-
-.preview-title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: var(--primary-aqua);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* CSS dla killfeed z zadania - ZOPTYMALIZOWANY I POPRAWIONY */
-a {
-    text-decoration: none;
-}
-
-.killFeed {
-    margin-top: 15px;
-    min-width: 100px;
-    position: relative;
-    display: inline-block;
-    height: 45px;
-    background: #00070d;
-    border-radius: 10px;
-    padding: 0 12px;
-    transform: scale(1);
-    transition: .1s;
-    font-family: 'Orbitron', sans-serif;
-    transform: scale(1.1);
-    margin: 20px 0;
-}
-
-.killFeedDead {
-    margin-top: 15px;
-    min-width: 100px;
-    position: relative;
-    display: inline-block;
-    height: 43px;
-    background: #8B0000;
-    border-radius: 6px;
-    padding: 0 12px;
-    transform: scale(1);
-    transition: .1s;
-    font-family: 'Orbitron', sans-serif;
-    transform: scale(1.1);
-    margin: 20px 0;
-}
-
-.killerCT {
-    color: var(--ct-color);
-    line-height: 45px;
-    display: inline-block;
-    margin-right: 10px;
-    float: left;
-    font-weight: 700;
-}
-
-.killerTT {
-    color: var(--tt-color);
-    line-height: 45px;
-    display: inline-block;
-    margin-right: 10px;
-    float: left;
-    font-weight: 700;
-}
-
-.killedTT {
-    margin-left: -2px;
-    color: var(--tt-color);
-    line-height: 45px;
-    display: inline-block;
-    float: left;
-    font-weight: 700;
-}
-
-.killedCT {
-    margin-left: -2px;
-    color: var(--ct-color);
-    line-height: 45px;
-    display: inline-block;
-    float: left;
-    font-weight: 700;
-}
-
-.weapon {
-    float: left;
-}
-
-.weapon.tec9 {
-    margin: 10px 0 0 -15px;
-    height: 26px;
-    width: 80px;
-    background: url(https://i.imgur.com/r9c3iUI.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.deagle {
-    margin: 9px 0 0 -15px;
-    height: 26px;
-    width: 80px;
-    background: url(https://i.imgur.com/HOVQ8Jk.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.m4a1s {
-    margin: 10px 8px 0 0;
-    height: 25px;
-    width: 80px;
-    background: url(https://i.imgur.com/Z1YR04z.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.galil {
-    margin: 10px 8px 0 0;
-    height: 25px;
-    width: 80px;
-    background: url(https://i.imgur.com/CiqqMAZ.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.ak47 {
-    margin: 10px 8px 0 0;
-    height: 25px;
-    width: 88px;
-    background: url(http://i.imgur.com/fZlAs4p.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.famas {
-    margin: 10px 8px 0 0;
-    height: 25px;
-    width: 70px;
-    background: url(https://i.imgur.com/ZGeKmW2.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.m4a4 {
-    margin: 8px 8px 0 0;
-    height: 25px;
-    width: 80px;
-    background: url(https://i.imgur.com/0D6YVWy.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.usp {
-    margin: 10px 0 0 -8px;
-    height: 25px;
-    width: 80px;
-    background: url(http://i.imgur.com/dT1EGjU.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.bfly {
-    margin: 10px 0 0 0;
-    height: 30px;
-    width: 80px;
-    background: url(https://i.imgur.com/SpuRMUg.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.knifect {
-    margin: 10px 0 0 0;
-    height: 25px;
-    width: 80px;
-    background: url(https://i.imgur.com/bhzclsQ.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.fire {
-    margin: 10px 0 0 0;
-    height: 25px;
-    width: 80px;
-    background: url(https://i.imgur.com/fMJt6CO.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.glock {
-    margin: 10px -6px 0 -20px;
-    height: 25px;
-    width: 80px;
-    background: url(https://i.imgur.com/oGoKoAT.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.p250 {
-    margin: 9px 4px 0 -2px;
-    height: 29px;
-    width: 39px;
-    background: url(https://i.imgur.com/zCq4FjH.png) no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.weapon.awp {
-    margin: 10px 16px 0 0;
-    height: 25px;
-    width: 80px;
-    background: url("http://i.imgur.com/i5Euh7o.png") no-repeat;
-    background-size: cover;
-    float: left;
-}
-
-.hs{
-    margin: 10px 4px 0 0;
-    height: 28px;
-    width: 28px;
-    background-image: url(https://i.imgur.com/Wmzf4nL_d.webp?maxwidth=760&fidelity=grand);
-    background-size: cover;
-    float: left;
-}
-
-.smoke{
-    margin: 4px 12px 0 -10px;
-    height: 36px;
-    width: 36px;
-    background-image: url(https://i.imgur.com/dq4Xqua.png);
-    background-size: cover;
-    float: left;
-}
-
-.wallbang {
-    margin: 8px 6px 0 0;
-    height: 28px;
-    width: 28px;
-    background: url(https://i.imgur.com/OsKtcbP.png);
-    background-size: cover;
-    float: left;
-}
-
-.noscope {
-    margin: 8px 6px 0 -10px;
-    height: 28px;
-    width: 28px;
-    background: url(https://i.imgur.com/9f6HQOS.png);
-    background-size: cover;
-    float: left;
-}
-
-.preview-info {
-    margin-top: 15px;
-    text-align: center;
-    color: rgba(0, 255, 255, 0.7);
-    font-size: 0.85rem;
-    padding: 12px;
-    background: rgba(15, 20, 25, 0.5);
-    border-radius: 5px;
-    width: 100%;
-}
-
-footer {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(0, 255, 255, 0.2);
-    color: rgba(0, 255, 255, 0.6);
-    font-size: 0.85rem;
-}
-
-/* Responsywność */
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadButton = document.getElementById('downloadKillfeed');
+    
+    // Pobieranie wszystkich elementów formularza
+    const feedType = document.getElementById('feedType');
+    const killerName = document.getElementById('killerName');
+    const killerTeam = document.getElementById('killerTeam');
+    const killedName = document.getElementById('killedName');
+    const killedTeam = document.getElementById('killedTeam');
+    const weapon = document.getElementById('weapon');
+    const headshot = document.getElementById('headshot');
+    const wallbang = document.getElementById('wallbang');
+    const noscope = document.getElementById('noscope');
+    const smoke = document.getElementById('smoke');
+    const fontFamily = document.getElementById('fontFamily');
+    const downloadSize = document.getElementById('downloadSize');
+    
+    // Funkcja aktualizująca podgląd
+    function updatePreview() {
+        const feedTypeValue = feedType.value;
+        const killerNameValue = killerName.value;
+        const killerTeamValue = killerTeam.value;
+        const killedNameValue = killedName.value;
+        const killedTeamValue = killedTeam.value;
+        const weaponValue = weapon.value;
+        const headshotValue = headshot.checked;
+        const wallbangValue = wallbang.checked;
+        const noscopeValue = noscope.checked;
+        const smokeValue = smoke.checked;
+        const fontFamilyValue = fontFamily.value;
+        
+        // Tworzenie HTML dla killfeeda
+        let killfeedHTML = '';
+        
+        if (feedTypeValue === 'killFeed') {
+            killfeedHTML = `<div class="killFeed" style="font-family: '${fontFamilyValue}', sans-serif;">`;
+        } else {
+            killfeedHTML = `<div class="killFeedDead" style="font-family: '${fontFamilyValue}', sans-serif;">`;
+        }
+        
+        // Dodanie zabójcy
+        if (killerTeamValue === 'CT') {
+            killfeedHTML += `<a href="" class="killerCT">${killerNameValue}</a>`;
+        } else {
+            killfeedHTML += `<a href="" class="killerTT">${killerNameValue}</a>`;
+        }
+        
+        // Dodanie broni
+        killfeedHTML += `<div class="weapon ${weaponValue}"></div>`;
+        
+        // Dodanie dodatkowych elementów z optymalizacją, aby się nie nakładały
+        // Ustawiamy kolejność: smoke, noscope, wallbang, headshot
+        if (smokeValue) {
+            killfeedHTML += `<div class="smoke"></div>`;
+        }
+        
+        if (noscopeValue) {
+            killfeedHTML += `<div class="noscope"></div>`;
+        }
+        
+        if (wallbangValue) {
+            killfeedHTML += `<div class="wallbang"></div>`;
+        }
+        
+        if (headshotValue) {
+            killfeedHTML += `<div class="hs"></div>`;
+        }
+        
+        // Dodanie ofiary
+        if (killedTeamValue === 'CT') {
+            killfeedHTML += `<a href="" class="killedCT">${killedNameValue}</a>`;
+        } else {
+            killfeedHTML += `<a href="" class="killedTT">${killedNameValue}</a>`;
+        }
+        
+        killfeedHTML += `</div>`;
+        
+        // Aktualizacja podglądu
+        document.getElementById('killfeedPreview').innerHTML = killfeedHTML;
     }
     
-    h1 {
-        font-size: 2rem;
+    // Funkcja pobierania killfeeda jako obraz
+    function downloadKillfeed() {
+        const killfeedElement = document.getElementById('killfeedPreview').firstChild;
+        const scale = parseInt(downloadSize.value);
+        
+        // Pobieranie html2canvas dynamicznie, aby uniknąć problemów z ładowaniem
+        if (typeof html2canvas === 'undefined') {
+            // Jeśli html2canvas nie jest załadowany, ładujemy go dynamicznie
+            const script = document.createElement('script');
+            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+            script.onload = function() {
+                // Po załadowaniu biblioteki, wykonujemy pobieranie
+                generateAndDownloadImage(killfeedElement, scale);
+            };
+            document.head.appendChild(script);
+        } else {
+            // Jeśli html2canvas jest już dostępny, wykonujemy pobieranie
+            generateAndDownloadImage(killfeedElement, scale);
+        }
     }
     
-    .controls, .preview {
-        min-width: 100%;
+    // Funkcja generująca i pobierająca obraz
+    function generateAndDownloadImage(element, scale) {
+        html2canvas(element, {
+            backgroundColor: null,
+            scale: scale,
+            logging: false,
+            useCORS: true,
+            allowTaint: true
+        }).then(canvas => {
+            // Tworzenie linku do pobrania
+            const link = document.createElement('a');
+            link.download = `killfeed-${Date.now()}.png`;
+            link.href = canvas.toDataURL('image/png');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }).catch(error => {
+            console.error('Błąd podczas generowania obrazu:', error);
+            alert('Wystąpił błąd podczas generowania obrazu. Spróbuj ponownie.');
+        });
     }
     
-    .killFeed, .killFeedDead {
-        transform: scale(1);
-    }
-}
+    // Dodanie event listenerów do wszystkich elementów formularza
+    const formElements = [
+        feedType, killerName, killerTeam, killedName, killedTeam, weapon, 
+        headshot, wallbang, noscope, smoke, fontFamily, downloadSize
+    ];
+    
+    formElements.forEach(element => {
+        element.addEventListener('input', updatePreview);
+        element.addEventListener('change', updatePreview);
+    });
+    
+    // Event listener dla przycisku pobierania
+    downloadButton.addEventListener('click', downloadKillfeed);
+    
+    // Inicjalizacja podglądu
+    updatePreview();
+});
