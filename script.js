@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funkcja aktualizująca podgląd
     function updatePreview() {
         const feedTypeValue = feedType.value;
-        const killerNameValue = killerName.value;
+        const killerNameValue = killerName.value || "Zabójca";
         const killerTeamValue = killerTeam.value;
-        const killedNameValue = killedName.value;
+        const killedNameValue = killedName.value || "Ofiara";
         const killedTeamValue = killedTeam.value;
         const weaponValue = weapon.value;
         const headshotValue = headshot.checked;
@@ -87,31 +87,36 @@ document.addEventListener('DOMContentLoaded', function() {
         const killfeedElement = document.getElementById('killfeedPreview').firstChild;
         const scale = parseInt(downloadSize.value);
         
-        // Pobieranie html2canvas dynamicznie, aby uniknąć problemów z ładowaniem
+        // Sprawdzenie, czy html2canvas jest dostępny
         if (typeof html2canvas === 'undefined') {
-            // Jeśli html2canvas nie jest załadowany, ładujemy go dynamicznie
-            const script = document.createElement('script');
-            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
-            script.onload = function() {
-                // Po załadowaniu biblioteki, wykonujemy pobieranie
-                generateAndDownloadImage(killfeedElement, scale);
-            };
-            document.head.appendChild(script);
-        } else {
-            // Jeśli html2canvas jest już dostępny, wykonujemy pobieranie
-            generateAndDownloadImage(killfeedElement, scale);
+            alert('Błąd: Biblioteka html2canvas nie została załadowana. Spróbuj odświeżyć stronę.');
+            return;
         }
+        
+        // Generowanie i pobieranie obrazu
+        generateAndDownloadImage(killfeedElement, scale);
     }
     
     // Funkcja generująca i pobierająca obraz
     function generateAndDownloadImage(element, scale) {
+        // Dodanie informacji o ładowaniu
+        const originalText = downloadButton.textContent;
+        downloadButton.textContent = 'Generowanie...';
+        downloadButton.disabled = true;
+        
         html2canvas(element, {
             backgroundColor: null,
             scale: scale,
             logging: false,
             useCORS: true,
-            allowTaint: true
+            allowTaint: false,
+            width: element.offsetWidth,
+            height: element.offsetHeight
         }).then(canvas => {
+            // Przywrócenie przycisku
+            downloadButton.textContent = originalText;
+            downloadButton.disabled = false;
+            
             // Tworzenie linku do pobrania
             const link = document.createElement('a');
             link.download = `killfeed-${Date.now()}.png`;
@@ -122,6 +127,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }).catch(error => {
             console.error('Błąd podczas generowania obrazu:', error);
             alert('Wystąpił błąd podczas generowania obrazu. Spróbuj ponownie.');
+            
+            // Przywrócenie przycisku w przypadku błędu
+            downloadButton.textContent = originalText;
+            downloadButton.disabled = false;
         });
     }
     
