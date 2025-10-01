@@ -13,17 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const noscope = document.getElementById('noscope');
     const smoke = document.getElementById('smoke');
     const fontFamily = document.getElementById('fontFamily');
-    
-    // Elementy pozycjonowania
-    const weaponTop = document.getElementById('weaponTop');
-    const weaponRight = document.getElementById('weaponRight');
-    const weaponLeft = document.getElementById('weaponLeft');
-    const hsTop = document.getElementById('hsTop');
-    const hsRight = document.getElementById('hsRight');
-    const hsLeft = document.getElementById('hsLeft');
-    const wbTop = document.getElementById('wbTop');
-    const wbRight = document.getElementById('wbRight');
-    const wbLeft = document.getElementById('wbLeft');
+    const downloadSize = document.getElementById('downloadSize');
     
     // Funkcja aktualizująca podgląd
     function updatePreview() {
@@ -38,17 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const noscopeValue = noscope.checked;
         const smokeValue = smoke.checked;
         const fontFamilyValue = fontFamily.value;
-        
-        // Pobieranie wartości pozycjonowania
-        const weaponTopValue = weaponTop.value;
-        const weaponRightValue = weaponRight.value;
-        const weaponLeftValue = weaponLeft.value;
-        const hsTopValue = hsTop.value;
-        const hsRightValue = hsRight.value;
-        const hsLeftValue = hsLeft.value;
-        const wbTopValue = wbTop.value;
-        const wbRightValue = wbRight.value;
-        const wbLeftValue = wbLeft.value;
         
         // Tworzenie HTML dla killfeeda
         let killfeedHTML = '';
@@ -66,16 +45,16 @@ document.addEventListener('DOMContentLoaded', function() {
             killfeedHTML += `<a href="" class="killerTT">${killerNameValue}</a>`;
         }
         
-        // Dodanie broni z dynamicznym pozycjonowaniem
-        killfeedHTML += `<div class="weapon ${weaponValue}" style="margin: ${weaponTopValue}px ${weaponRightValue}px 0px ${weaponLeftValue}px;"></div>`;
+        // Dodanie broni
+        killfeedHTML += `<div class="weapon ${weaponValue}"></div>`;
         
-        // Dodanie dodatkowych elementów z dynamicznym pozycjonowaniem
+        // Dodanie dodatkowych elementów
         if (headshotValue) {
-            killfeedHTML += `<div class="hs" style="margin: ${hsTopValue}px ${hsRightValue}px 0px ${hsLeftValue}px;"></div>`;
+            killfeedHTML += `<div class="hs"></div>`;
         }
         
         if (wallbangValue) {
-            killfeedHTML += `<div class="wallbang" style="margin: ${wbTopValue}px ${wbRightValue}px 0px ${wbLeftValue}px;"></div>`;
+            killfeedHTML += `<div class="wallbang"></div>`;
         }
         
         if (noscopeValue) {
@@ -102,26 +81,50 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funkcja pobierania killfeeda jako obraz
     function downloadKillfeed() {
         const killfeedElement = document.getElementById('killfeedPreview').firstChild;
+        const scale = parseInt(downloadSize.value);
         
-        html2canvas(killfeedElement, {
+        // Pobieranie html2canvas dynamicznie, aby uniknąć problemów z ładowaniem
+        if (typeof html2canvas === 'undefined') {
+            // Jeśli html2canvas nie jest załadowany, ładujemy go dynamicznie
+            const script = document.createElement('script');
+            script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+            script.onload = function() {
+                // Po załadowaniu biblioteki, wykonujemy pobieranie
+                generateAndDownloadImage(killfeedElement, scale);
+            };
+            document.head.appendChild(script);
+        } else {
+            // Jeśli html2canvas jest już dostępny, wykonujemy pobieranie
+            generateAndDownloadImage(killfeedElement, scale);
+        }
+    }
+    
+    // Funkcja generująca i pobierająca obraz
+    function generateAndDownloadImage(element, scale) {
+        html2canvas(element, {
             backgroundColor: null,
-            scale: 2, // Wyższa rozdzielczość
-            logging: false
+            scale: scale,
+            logging: false,
+            useCORS: true,
+            allowTaint: true
         }).then(canvas => {
             // Tworzenie linku do pobrania
             const link = document.createElement('a');
             link.download = `killfeed-${Date.now()}.png`;
             link.href = canvas.toDataURL('image/png');
+            document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
+        }).catch(error => {
+            console.error('Błąd podczas generowania obrazu:', error);
+            alert('Wystąpił błąd podczas generowania obrazu. Spróbuj ponownie.');
         });
     }
     
     // Dodanie event listenerów do wszystkich elementów formularza
     const formElements = [
         feedType, killerName, killerTeam, killedName, killedTeam, weapon, 
-        headshot, wallbang, noscope, smoke, fontFamily,
-        weaponTop, weaponRight, weaponLeft, hsTop, hsRight, hsLeft,
-        wbTop, wbRight, wbLeft
+        headshot, wallbang, noscope, smoke, fontFamily, downloadSize
     ];
     
     formElements.forEach(element => {
