@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const downloadCurrentButton = document.getElementById('downloadCurrentKillfeed');
+    const downloadMultipleButton = document.getElementById('downloadMultipleKillfeeds');
     const downloadAllButton = document.getElementById('downloadAllKillfeeds');
     const killfeedTabs = document.querySelectorAll('.killfeed-tab');
+    const copyButton = document.getElementById('copySettings');
+    const pasteButton = document.getElementById('pasteSettings');
+    const downloadOptions = document.getElementById('downloadOptions');
+    const confirmDownloadButton = document.getElementById('confirmDownload');
     
     // Pobieranie wszystkich elementów formularza
     const feedType = document.getElementById('feedType');
@@ -20,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Zmienne do przechowywania ustawień dla 5 killfeedów
     let currentKillfeed = 1;
+    let clipboard = null;
     const killfeedSettings = {
         1: {
             feedType: 'killFeed',
@@ -93,6 +99,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
+    // Funkcja zapisywania ustawień do localStorage
+    function saveToLocalStorage() {
+        const data = {
+            settings: killfeedSettings,
+            timestamp: Date.now()
+        };
+        localStorage.setItem('killfeedGenerator', JSON.stringify(data));
+    }
+    
+    // Funkcja wczytywania ustawień z localStorage
+    function loadFromLocalStorage() {
+        const data = localStorage.getItem('killfeedGenerator');
+        if (data) {
+            const parsedData = JSON.parse(data);
+            const now = Date.now();
+            // Sprawdź czy dane są starsze niż 5 minut (300000 ms)
+            if (now - parsedData.timestamp < 300000) {
+                // Wczytaj ustawienia
+                Object.keys(parsedData.settings).forEach(key => {
+                    killfeedSettings[key] = parsedData.settings[key];
+                });
+                return true;
+            } else {
+                // Usuń przestarzałe dane
+                localStorage.removeItem('killfeedGenerator');
+            }
+        }
+        return false;
+    }
+    
     // Funkcja zapisująca ustawienia do aktualnego killfeeda
     function saveCurrentSettings() {
         killfeedSettings[currentKillfeed] = {
@@ -109,6 +145,9 @@ document.addEventListener('DOMContentLoaded', function() {
             fontFamily: fontFamily.value,
             boldFont: boldFont.checked
         };
+        
+        // Zapisz do localStorage
+        saveToLocalStorage();
     }
     
     // Funkcja wczytująca ustawienia z aktualnego killfeeda
@@ -133,15 +172,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('previewKillfeedNumber').textContent = currentKillfeed;
     }
     
-    // Funkcja aktualizująca podgląd
-    function updatePreview() {
-        saveCurrentSettings();
-        
-        const settings = killfeedSettings[currentKillfeed];
+    // Funkcja generująca HTML killfeeda na podstawie ustawień
+    function generateKillfeedHTML(settings) {
         const killerNameValue = settings.killerName || "Zabójca";
         const killedNameValue = settings.killedName || "Ofiara";
         
-        // Tworzenie HTML dla killfeeda
         let killfeedHTML = '';
         let boldClass = settings.boldFont ? ' bold-killfeed' : '';
         
@@ -187,8 +222,37 @@ document.addEventListener('DOMContentLoaded', function() {
         
         killfeedHTML += `</div>`;
         
+        return killfeedHTML;
+    }
+    
+    // Funkcja aktualizująca podgląd
+    function updatePreview() {
+        saveCurrentSettings();
+        
+        const settings = killfeedSettings[currentKillfeed];
+        const killfeedHTML = generateKillfeedHTML(settings);
+        
         // Aktualizacja podglądu
         document.getElementById('killfeedPreview').innerHTML = killfeedHTML;
+    }
+    
+    // Funkcja kopiowania ustawień
+    function copySettings() {
+        saveCurrentSettings();
+        clipboard = JSON.parse(JSON.stringify(killfeedSettings[currentKillfeed]));
+        alert('Ustawienia killfeeda ' + currentKillfeed + ' zostały skopiowane!');
+    }
+    
+    // Funkcja wklejania ustawień
+    function pasteSettings() {
+        if (clipboard) {
+            killfeedSettings[currentKillfeed] = JSON.parse(JSON.stringify(clipboard));
+            loadCurrentSettings();
+            updatePreview();
+            alert('Ustawienia zostały wklejone do killfeeda ' + currentKillfeed + '!');
+        } else {
+            alert('Brak skopiowanych ustawień! Najpierw skopiuj ustawienia z innego killfeeda.');
+        }
     }
     
     // Funkcja pobierania aktualnego killfeeda jako obraz
@@ -206,8 +270,20 @@ document.addEventListener('DOMContentLoaded', function() {
         generateAndDownloadImage(killfeedElement, scale, `killfeed-${currentKillfeed}-${Date.now()}.png`);
     }
     
-    // Funkcja pobierania wszystkich killfeedów
-    function downloadAllKillfeeds() {
+    // Funkcja pobierania wybranych killfeedów
+    function downloadSelectedKillfeeds() {
+        const selectedCheckboxes = document.querySelectorAll('.killfeed-checkboxes input[type="checkbox"]:checked');
+        if (selectedCheckboxes.length === 0) {
+            alert('Wybierz przynajmniej jeden killfeed do pobrania!');
+            return;
+        }
+        
+        const selectedKillfeeds = Array.from(selectedCheckboxes).map(cb => parseInt(cb.value));
+        downloadMultipleKillfeeds(selectedKillfeeds);
+    }
+    
+    // Funkcja pobierania wielu killfeedów
+    function downloadMultipleKillfeeds(killfeedNumbers) {
         if (typeof html2canvas === 'undefined') {
             alert('Błąd: Biblioteka html2canvas nie została załadowana. Spróbuj odświeżyć stronę.');
             return;
@@ -218,121 +294,83 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Pobierz oryginalny stan
         const originalKillfeed = currentKillfeed;
-        const originalText = downloadAllButton.textContent;
-        downloadAllButton.textContent = 'Generowanie...';
-        downloadAllButton.disabled = true;
+        let downloadCount = 0;
+        const totalCount = killfeedNumbers.length;
         
-        // Stwórz kontener dla wszystkich killfeedów
-        const container = document.createElement('div');
-        container.style.padding = '20px';
-        container.style.background = 'transparent';
-        container.style.display = 'flex';
-        container.style.flexDirection = 'column';
-        container.style.gap = '15px';
-        container.style.alignItems = 'center';
-        
-        // Dodaj killfeedy do kontenera
-        for (let i = 1; i <= 5; i++) {
-            const settings = killfeedSettings[i];
+        // Funkcja do pobierania kolejnego killfeeda
+        function downloadNextKillfeed() {
+            if (downloadCount >= totalCount) {
+                // Przywróć oryginalny killfeed
+                currentKillfeed = originalKillfeed;
+                loadCurrentSettings();
+                updatePreview();
+                return;
+            }
+            
+            const killfeedNumber = killfeedNumbers[downloadCount];
+            const settings = killfeedSettings[killfeedNumber];
             const killerNameValue = settings.killerName || "Zabójca";
             const killedNameValue = settings.killedName || "Ofiara";
             
-            let killfeedHTML = '';
-            let boldClass = settings.boldFont ? ' bold-killfeed' : '';
+            // Generuj HTML dla killfeeda
+            const killfeedHTML = generateKillfeedHTML(settings);
             
-            if (settings.feedType === 'killFeed') {
-                killfeedHTML = `<div class="killFeed${boldClass}" style="font-family: '${settings.fontFamily}', sans-serif;">`;
-            } else {
-                killfeedHTML = `<div class="killFeedDead${boldClass}" style="font-family: '${settings.fontFamily}', sans-serif;">`;
-            }
+            // Stwórz tymczasowy element
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = killfeedHTML;
+            const killfeedElement = tempDiv.firstChild;
             
-            // Dodanie zabójcy
-            if (settings.killerTeam === 'CT') {
-                killfeedHTML += `<a href="" class="killerCT">${killerNameValue}</a>`;
-            } else {
-                killfeedHTML += `<a href="" class="killerTT">${killerNameValue}</a>`;
-            }
+            // Dodaj do dokumentu (ukryty)
+            killfeedElement.style.position = 'absolute';
+            killfeedElement.style.left = '-9999px';
+            document.body.appendChild(killfeedElement);
             
-            // Dodanie broni
-            killfeedHTML += `<div class="weapon ${settings.weapon}"></div>`;
+            const scale = parseInt(downloadSize.value);
             
-            // Dodanie dodatkowych elementów
-            if (settings.smoke) {
-                killfeedHTML += `<div class="smoke"></div>`;
-            }
-            
-            if (settings.noscope) {
-                killfeedHTML += `<div class="noscope"></div>`;
-            }
-            
-            if (settings.wallbang) {
-                killfeedHTML += `<div class="wallbang"></div>`;
-            }
-            
-            if (settings.headshot) {
-                killfeedHTML += `<div class="hs"></div>`;
-            }
-            
-            // Dodanie ofiary
-            if (settings.killedTeam === 'CT') {
-                killfeedHTML += `<a href="" class="killedCT">${killedNameValue}</a>`;
-            } else {
-                killfeedHTML += `<a href="" class="killedTT">${killedNameValue}</a>`;
-            }
-            
-            killfeedHTML += `</div>`;
-            
-            container.innerHTML += killfeedHTML;
+            // Wygeneruj obraz
+            html2canvas(killfeedElement, {
+                backgroundColor: null,
+                scale: scale,
+                logging: false,
+                useCORS: true,
+                allowTaint: false,
+                width: killfeedElement.offsetWidth,
+                height: killfeedElement.offsetHeight
+            }).then(canvas => {
+                // Usuń element z dokumentu
+                document.body.removeChild(killfeedElement);
+                
+                // Tworzenie linku do pobrania
+                const link = document.createElement('a');
+                link.download = `killfeed-${killfeedNumber}-${Date.now()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Przejdź do następnego killfeeda
+                downloadCount++;
+                setTimeout(downloadNextKillfeed, 500); // Małe opóźnienie między pobraniami
+            }).catch(error => {
+                console.error('Błąd podczas generowania obrazu:', error);
+                alert('Wystąpił błąd podczas generowania killfeeda ' + killfeedNumber + '. Spróbuj ponownie.');
+                
+                // Usuń element z dokumentu
+                document.body.removeChild(killfeedElement);
+                
+                // Przejdź do następnego killfeeda
+                downloadCount++;
+                setTimeout(downloadNextKillfeed, 500);
+            });
         }
         
-        // Dodaj kontener do dokumentu
-        document.body.appendChild(container);
-        
-        const scale = parseInt(downloadSize.value);
-        
-        // Wygeneruj obraz
-        html2canvas(container, {
-            backgroundColor: null,
-            scale: scale,
-            logging: false,
-            useCORS: true,
-            allowTaint: false
-        }).then(canvas => {
-            // Usuń kontener z dokumentu
-            document.body.removeChild(container);
-            
-            // Przywróć przycisk
-            downloadAllButton.textContent = originalText;
-            downloadAllButton.disabled = false;
-            
-            // Przywróć oryginalny killfeed
-            currentKillfeed = originalKillfeed;
-            loadCurrentSettings();
-            updatePreview();
-            
-            // Tworzenie linku do pobrania
-            const link = document.createElement('a');
-            link.download = `wszystkie-killfeedy-${Date.now()}.png`;
-            link.href = canvas.toDataURL('image/png');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }).catch(error => {
-            console.error('Błąd podczas generowania obrazu:', error);
-            alert('Wystąpił błąd podczas generowania obrazu. Spróbuj ponownie.');
-            
-            // Usuń kontener z dokumentu
-            document.body.removeChild(container);
-            
-            // Przywróć przycisk w przypadku błędu
-            downloadAllButton.textContent = originalText;
-            downloadAllButton.disabled = false;
-            
-            // Przywróć oryginalny killfeed
-            currentKillfeed = originalKillfeed;
-            loadCurrentSettings();
-            updatePreview();
-        });
+        // Rozpocznij pobieranie
+        downloadNextKillfeed();
+    }
+    
+    // Funkcja pobierania wszystkich killfeedów
+    function downloadAllKillfeeds() {
+        downloadMultipleKillfeeds([1, 2, 3, 4, 5]);
     }
     
     // Funkcja generująca i pobierająca obraz
@@ -395,6 +433,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Obsługa przycisków kopiuj/wklej
+    copyButton.addEventListener('click', copySettings);
+    pasteButton.addEventListener('click', pasteSettings);
+    
+    // Obsługa przycisku pobierania wielu killfeedów
+    downloadMultipleButton.addEventListener('click', function() {
+        downloadOptions.style.display = downloadOptions.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    // Obsługa przycisku potwierdzenia pobierania wybranych killfeedów
+    confirmDownloadButton.addEventListener('click', function() {
+        downloadOptions.style.display = 'none';
+        downloadSelectedKillfeeds();
+    });
+    
     // Dodanie event listenerów do wszystkich elementów formularza
     const formElements = [
         feedType, killerName, killerTeam, killedName, killedTeam, weapon, 
@@ -409,6 +462,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener dla przycisków pobierania
     downloadCurrentButton.addEventListener('click', downloadCurrentKillfeed);
     downloadAllButton.addEventListener('click', downloadAllKillfeeds);
+    
+    // Inicjalizacja - wczytaj ustawienia z localStorage
+    const settingsLoaded = loadFromLocalStorage();
+    if (settingsLoaded) {
+        console.log('Ustawienia zostały wczytane z pamięci');
+    }
     
     // Inicjalizacja podglądu
     loadCurrentSettings();
