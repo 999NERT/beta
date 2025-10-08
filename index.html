@@ -23,6 +23,11 @@
                 <button class="killfeed-tab" data-killfeed="4">Killfeed 4</button>
                 <button class="killfeed-tab" data-killfeed="5">Killfeed 5</button>
             </div>
+            
+            <div class="copy-paste-buttons">
+                <button id="copySettings" class="copy-btn">Kopiuj ustawienia</button>
+                <button id="pasteSettings" class="paste-btn">Wklej ustawienia</button>
+            </div>
         </div>
         
         <div class="main-content">
@@ -143,11 +148,25 @@
                 
                 <div class="download-buttons">
                     <button id="downloadCurrentKillfeed" class="download-btn">Pobierz Aktualny Killfeed</button>
+                    <button id="downloadMultipleKillfeeds" class="download-btn download-multiple">Pobierz Wybrane Killfeedy</button>
                     <button id="downloadAllKillfeeds" class="download-btn download-all">Pobierz Wszystkie Killfeedy</button>
+                </div>
+                
+                <div class="download-options" id="downloadOptions" style="display: none;">
+                    <h3>Wybierz killfeedy do pobrania:</h3>
+                    <div class="killfeed-checkboxes">
+                        <label><input type="checkbox" value="1" checked> Killfeed 1</label>
+                        <label><input type="checkbox" value="2"> Killfeed 2</label>
+                        <label><input type="checkbox" value="3"> Killfeed 3</label>
+                        <label><input type="checkbox" value="4"> Killfeed 4</label>
+                        <label><input type="checkbox" value="5"> Killfeed 5</label>
+                    </div>
+                    <button id="confirmDownload" class="download-btn">Pobierz Wybrane</button>
                 </div>
                 
                 <div class="preview-info">
                     <p>Killfeed zostanie automatycznie zaktualizowany po każdej zmianie ustawień</p>
+                    <p>Ustawienia są automatycznie zapisywane na 5 minut</p>
                 </div>
             </div>
         </div>
