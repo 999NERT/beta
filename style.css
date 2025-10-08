@@ -26,7 +26,7 @@ body {
 }
 
 .container {
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -53,6 +53,57 @@ h1 {
     color: var(--text-white);
     margin-bottom: 8px;
     font-weight: 300;
+}
+
+.killfeed-selector {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: var(--secondary-dark);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 196, 255, 0.1);
+}
+
+.killfeed-selector h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.killfeed-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.killfeed-tab {
+    background: rgba(30, 30, 46, 0.7);
+    color: var(--text-white);
+    border: 1px solid rgba(0, 196, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    flex: 1;
+    max-width: 150px;
+    text-align: center;
+}
+
+.killfeed-tab:hover {
+    background: rgba(0, 196, 255, 0.1);
+    border-color: var(--primary-blue);
+}
+
+.killfeed-tab.active {
+    background: var(--primary-blue);
+    color: #000;
+    font-weight: 700;
 }
 
 .main-content {
@@ -102,6 +153,14 @@ h2 {
     padding-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+#currentKillfeedNumber, #previewKillfeedNumber {
+    color: var(--text-white);
+    background: rgba(0, 196, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 5px;
 }
 
 label {
@@ -159,6 +218,14 @@ input[type="text"]:focus, select:focus {
     margin: 0;
 }
 
+.download-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
 .download-btn {
     background: var(--primary-blue);
     color: #000;
@@ -171,7 +238,6 @@ input[type="text"]:focus, select:focus {
     font-weight: 700;
     transition: all 0.2s ease;
     width: 100%;
-    margin: 20px 0 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -183,6 +249,14 @@ input[type="text"]:focus, select:focus {
 
 .download-btn:active {
     transform: translateY(1px);
+}
+
+.download-all {
+    background: var(--success);
+}
+
+.download-all:hover {
+    background: #00b386;
 }
 
 .preview-title {
@@ -478,5 +552,15 @@ footer {
     
     .killFeed, .killFeedDead {
         transform: scale(1);
+    }
+    
+    .killfeed-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .killfeed-tab {
+        max-width: 100%;
+        width: 100%;
     }
 }
