@@ -309,8 +309,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const killfeedNumber = killfeedNumbers[downloadCount];
             const settings = killfeedSettings[killfeedNumber];
-            const killerNameValue = settings.killerName || "Zabójca";
-            const killedNameValue = settings.killedName || "Ofiara";
             
             // Generuj HTML dla killfeeda
             const killfeedHTML = generateKillfeedHTML(settings);
@@ -333,9 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 scale: scale,
                 logging: false,
                 useCORS: true,
-                allowTaint: false,
-                width: killfeedElement.offsetWidth,
-                height: killfeedElement.offsetHeight
+                allowTaint: false
             }).then(canvas => {
                 // Usuń element z dokumentu
                 document.body.removeChild(killfeedElement);
@@ -385,9 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
             scale: scale,
             logging: false,
             useCORS: true,
-            allowTaint: false,
-            width: element.offsetWidth,
-            height: element.offsetHeight
+            allowTaint: false
         }).then(canvas => {
             // Przywrócenie przycisku
             downloadCurrentButton.textContent = originalText;
