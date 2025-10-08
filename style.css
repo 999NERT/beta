@@ -351,7 +351,7 @@ input[type="text"]:focus, select:focus {
     letter-spacing: 1px;
 }
 
-/* CSS dla killfeed z zadania - ZOPTYMALIZOWANY I POPRAWIONY */
+/* CSS dla killfeed z zadania - POPRAWIONE DLA POBRANIA 1:1 */
 a {
     text-decoration: none;
 }
@@ -361,15 +361,13 @@ a {
     min-width: 100px;
     position: relative;
     display: inline-block;
-    height: 45px;
+    height: 39px;
     background: #00070d;
     border-radius: 10px;
-    padding: 0 12px;
-    transform: scale(1);
-    transition: .1s;
+    padding: 0 10px;
     font-family: Arial, sans-serif;
-    transform: scale(1.1);
     margin: 20px 0;
+    /* Usunięto transform: scale, aby pobieranie było 1:1 */
 }
 
 .killFeedDead {
@@ -377,51 +375,53 @@ a {
     min-width: 100px;
     position: relative;
     display: inline-block;
-    height: 43px;
+    height: 37px;
     background: #8B0000;
     border-radius: 6px;
-    padding: 0 12px;
-    transform: scale(1);
-    transition: .1s;
+    padding: 0 10px;
     font-family: Arial, sans-serif;
-    transform: scale(1.1);
     margin: 20px 0;
+    /* Usunięto transform: scale, aby pobieranie było 1:1 */
 }
 
 .killerCT {
     color: var(--ct-color);
-    line-height: 45px;
+    line-height: 39px;
     display: inline-block;
     margin-right: 10px;
     float: left;
     font-weight: 700;
+    font-size: 16px;
 }
 
 .killerTT {
     color: var(--tt-color);
-    line-height: 45px;
+    line-height: 39px;
     display: inline-block;
     margin-right: 10px;
     float: left;
     font-weight: 700;
+    font-size: 16px;
 }
 
 .killedTT {
     margin-left: -2px;
     color: var(--tt-color);
-    line-height: 45px;
+    line-height: 39px;
     display: inline-block;
     float: left;
     font-weight: 700;
+    font-size: 16px;
 }
 
 .killedCT {
     margin-left: -2px;
     color: var(--ct-color);
-    line-height: 45px;
+    line-height: 39px;
     display: inline-block;
     float: left;
     font-weight: 700;
+    font-size: 16px;
 }
 
 /* Style dla pogrubionej czcionki killfeeda */
@@ -438,7 +438,7 @@ a {
 }
 
 .weapon.tec9 {
-    margin: 10px 0 0 -15px;
+    margin: 7px 0 0 -18px;
     height: 26px;
     width: 80px;
     background: url(https://i.imgur.com/r9c3iUI.png) no-repeat;
@@ -447,7 +447,7 @@ a {
 }
 
 .weapon.deagle {
-    margin: 9px 0 0 -15px;
+    margin: 6px 0 0 -18px;
     height: 26px;
     width: 80px;
     background: url(https://i.imgur.com/HOVQ8Jk.png) no-repeat;
@@ -456,7 +456,7 @@ a {
 }
 
 .weapon.m4a1s {
-    margin: 10px 8px 0 0;
+    margin: 7px 8px 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/Z1YR04z.png) no-repeat;
@@ -465,7 +465,7 @@ a {
 }
 
 .weapon.galil {
-    margin: 10px 8px 0 0;
+    margin: 7px 8px 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/CiqqMAZ.png) no-repeat;
@@ -474,7 +474,7 @@ a {
 }
 
 .weapon.ak47 {
-    margin: 10px 8px 0 0;
+    margin: 7px 8px 0 0;
     height: 25px;
     width: 88px;
     background: url(http://i.imgur.com/fZlAs4p.png) no-repeat;
@@ -483,7 +483,7 @@ a {
 }
 
 .weapon.famas {
-    margin: 10px 8px 0 0;
+    margin: 7px 8px 0 0;
     height: 25px;
     width: 70px;
     background: url(https://i.imgur.com/ZGeKmW2.png) no-repeat;
@@ -492,7 +492,7 @@ a {
 }
 
 .weapon.m4a4 {
-    margin: 8px 8px 0 0;
+    margin: 5px 8px 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/0D6YVWy.png) no-repeat;
@@ -501,7 +501,7 @@ a {
 }
 
 .weapon.usp {
-    margin: 10px 0 0 -8px;
+    margin: 7px 0 0 -10px;
     height: 25px;
     width: 80px;
     background: url(http://i.imgur.com/dT1EGjU.png) no-repeat;
@@ -510,7 +510,7 @@ a {
 }
 
 .weapon.bfly {
-    margin: 10px 0 0 0;
+    margin: 7px 0 0 0;
     height: 30px;
     width: 80px;
     background: url(https://i.imgur.com/SpuRMUg.png) no-repeat;
@@ -519,7 +519,7 @@ a {
 }
 
 .weapon.knifect {
-    margin: 10px 0 0 0;
+    margin: 7px 0 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/bhzclsQ.png) no-repeat;
@@ -528,7 +528,7 @@ a {
 }
 
 .weapon.fire {
-    margin: 10px 0 0 0;
+    margin: 7px 0 0 0;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/fMJt6CO.png) no-repeat;
@@ -537,7 +537,7 @@ a {
 }
 
 .weapon.glock {
-    margin: 10px -6px 0 -20px;
+    margin: 7px -8px 0 -24px;
     height: 25px;
     width: 80px;
     background: url(https://i.imgur.com/oGoKoAT.png) no-repeat;
@@ -546,7 +546,7 @@ a {
 }
 
 .weapon.p250 {
-    margin: 9px 4px 0 -2px;
+    margin: 6px 4px 8px -2px;
     height: 29px;
     width: 39px;
     background: url(https://i.imgur.com/zCq4FjH.png) no-repeat;
@@ -555,7 +555,7 @@ a {
 }
 
 .weapon.awp {
-    margin: 10px 16px 0 0;
+    margin: 7px 16px 0 0;
     height: 25px;
     width: 80px;
     background: url("http://i.imgur.com/i5Euh7o.png") no-repeat;
@@ -564,7 +564,7 @@ a {
 }
 
 .hs{
-    margin: 10px 4px 0 0;
+    margin: 7px 4px 0 0;
     height: 28px;
     width: 28px;
     background-image: url(https://i.imgur.com/Wmzf4nL_d.webp?maxwidth=760&fidelity=grand);
@@ -573,7 +573,7 @@ a {
 }
 
 .smoke{
-    margin: 4px 12px 0 -10px;
+    margin: 1px 12px 0 -12px;
     height: 36px;
     width: 36px;
     background-image: url(https://i.imgur.com/dq4Xqua.png);
@@ -582,7 +582,7 @@ a {
 }
 
 .wallbang {
-    margin: 8px 6px 0 0;
+    margin: 5px 6px 0 0;
     height: 28px;
     width: 28px;
     background: url(https://i.imgur.com/OsKtcbP.png);
@@ -591,7 +591,7 @@ a {
 }
 
 .noscope {
-    margin: 8px 6px 0 -10px;
+    margin: 5px 6px 0 -12px;
     height: 28px;
     width: 28px;
     background: url(https://i.imgur.com/9f6HQOS.png);
@@ -631,10 +631,6 @@ footer {
     
     .controls, .preview {
         min-width: 100%;
-    }
-    
-    .killFeed, .killFeedDead {
-        transform: scale(1);
     }
     
     .killfeed-tabs {
