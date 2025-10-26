@@ -527,6 +527,15 @@ a {
     float: left;
 }
 
+.weapon.hegrenade {
+    margin: 7px 0 0 0;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/GHMU1fp.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
 .weapon.fire {
     margin: 7px 0 0 0;
     height: 25px;
