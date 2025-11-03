@@ -473,6 +473,15 @@ a {
     float: left;
 }
 
+.weapon.seven {
+    margin: 7px 16px 0 0;
+    height: 25px;
+    width: 36px;
+    background: url(https://i.imgur.com/eHov88Z.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
 .weapon.ak47 {
     margin: 7px 8px 0 0;
     height: 25px;
