@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const killerTeam = document.getElementById('killerTeam');
     const killedName = document.getElementById('killedName');
     const killedTeam = document.getElementById('killedTeam');
+    const killedCounter = document.getElementById('killedCounter');
     const weapon = document.getElementById('weapon');
     const headshot = document.getElementById('headshot');
     const wallbang = document.getElementById('wallbang');
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             killerTeam: 'CT',
             killedName: '',
             killedTeam: 'TT',
+            killedCounter: '',
             weapon: 'ak47',
             headshot: false,
             wallbang: false,
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             killerTeam: 'CT',
             killedName: '',
             killedTeam: 'TT',
+            killedCounter: '',
             weapon: 'ak47',
             headshot: false,
             wallbang: false,
@@ -61,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             killerTeam: 'CT',
             killedName: '',
             killedTeam: 'TT',
+            killedCounter: '',
             weapon: 'ak47',
             headshot: false,
             wallbang: false,
@@ -75,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             killerTeam: 'CT',
             killedName: '',
             killedTeam: 'TT',
+            killedCounter: '',
             weapon: 'ak47',
             headshot: false,
             wallbang: false,
@@ -89,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             killerTeam: 'CT',
             killedName: '',
             killedTeam: 'TT',
+            killedCounter: '',
             weapon: 'ak47',
             headshot: false,
             wallbang: false,
@@ -137,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             killerTeam: killerTeam.value,
             killedName: killedName.value,
             killedTeam: killedTeam.value,
+            killedCounter: killedCounter.value,
             weapon: weapon.value,
             headshot: headshot.checked,
             wallbang: wallbang.checked,
@@ -159,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
         killerTeam.value = settings.killerTeam;
         killedName.value = settings.killedName;
         killedTeam.value = settings.killedTeam;
+        killedCounter.value = settings.killedCounter;
         weapon.value = settings.weapon;
         headshot.checked = settings.headshot;
         wallbang.checked = settings.wallbang;
@@ -218,6 +226,11 @@ document.addEventListener('DOMContentLoaded', function() {
             killfeedHTML += `<a href="" class="killedCT">${killedNameValue}</a>`;
         } else {
             killfeedHTML += `<a href="" class="killedTT">${killedNameValue}</a>`;
+        }
+        
+        // Dodanie czerwonego licznika jeśli został podany
+        if (settings.killedCounter && settings.killedCounter.trim() !== '') {
+            killfeedHTML += `<span class="kill-counter">${settings.killedCounter}</span>`;
         }
         
         killfeedHTML += `</div>`;
@@ -444,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Dodanie event listenerów do wszystkich elementów formularza
     const formElements = [
-        feedType, killerName, killerTeam, killedName, killedTeam, weapon, 
+        feedType, killerName, killerTeam, killedName, killedTeam, killedCounter, weapon, 
         headshot, wallbang, noscope, smoke, fontFamily, downloadSize, boldFont
     ];
     
