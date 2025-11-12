@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Killfeed CS:GO 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GENERATOR KILLFEED CS:GO</h1>
+            <p class="subtitle">Nowoczesne narzędzie do tworzenia killfeedów • 2025 Edition</p>
+        </header>
+        
+        <div class="killfeed-selector">
+            <h2>Wybierz Killfeed do edycji:</h2>
+            <div class="killfeed-tabs">
+                <button class="killfeed-tab active" data-killfeed="1">Killfeed 1</button>
+                <button class="killfeed-tab" data-killfeed="2">Killfeed 2</button>
+                <button class="killfeed-tab" data-killfeed="3">Killfeed 3</button>
+                <button class="killfeed-tab" data-killfeed="4">Killfeed 4</button>
+                <button class="killfeed-tab" data-killfeed="5">Killfeed 5</button>
+            </div>
+            
+            <div class="copy-paste-buttons">
+                <button id="copySettings" class="copy-btn">Kopiuj ustawienia</button>
+                <button id="pasteSettings" class="paste-btn">Wklej ustawienia</button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="controls">
+                <h2>Ustawienia Killfeeda <span id="currentKillfeedNumber">1</span></h2>
+                
+                <div class="control-group">
+                    <label for="feedType">Typ Killfeeda:</label>
+                    <select id="feedType">
+                        <option value="killFeed">Normalny Killfeed</option>
+                        <option value="killFeedDead">Dead Killfeed</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="killerName">Nazwa Zabójcy:</label>
+                    <input type="text" id="killerName" placeholder="Wpisz nazwę zabójcy">
+                    
+                    <label for="killerTeam">Drużyna Zabójcy:</label>
+                    <select id="killerTeam">
+                        <option value="CT">Counter-Terrorists (CT)</option>
+                        <option value="TT">Terrorists (TT)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="killedName">Nazwa Ofiary:</label>
+                    <input type="text" id="killedName" placeholder="Wpisz nazwę ofiary">
+                    
+                    <label for="killedTeam">Drużyna Ofiary:</label>
+                    <select id="killedTeam">
+                        <option value="TT">Terrorists (TT)</option>
+                        <option value="CT">Counter-Terrorists (CT)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="weapon">Broń:</label>
+                    <select id="weapon">
+                        <option value="ak47">AK-47</option>
+                        <option value="m4a1s">M4A1-S</option>
+                        <option value="m4a4">M4A4</option>
+                        <option value="awp">AWP</option>
+                        <option value="deagle">Desert Eagle</option>
+                        <option value="usp">USP-S</option>
+                        <option value="glock">Glock-18</option>
+                        <option value="p250">P250</option>
+                        <option value="tec9">Tec-9</option>
+                        <option value="famas">FAMAS</option>
+                        <option value="galil">Galil AR</option>
+                        <option value="bfly">Butterfly Knife</option>
+                        <option value="knifect">CT Knife</option>
+                        <option value="fire">Fire</option>
+                        <option value="hegrenade">HE Grenade</option>
+                        <option value="seven">FIVE-SEVEN</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label>Dodatkowe Elementy:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="headshot">
+                            <label for="headshot">Headshot</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="wallbang">
+                            <label for="wallbang">Wallbang</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="noscope">
+                            <label for="noscope">No Scope</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="smoke">
+                            <label for="smoke">Smoke</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="fontFamily">Czcionka Killfeeda:</label>
+                    <select id="fontFamily">
+                        <option value="Orbitron">Orbitron (Nowoczesna)</option>
+                        <option value="Montserrat">Montserrat (Elegancka)</option>
+                        <option value="Poppins">Poppins (Nowoczesna)</option>
+                        <option value="Roboto Condensed">Roboto Condensed (Kompaktowa)</option>
+                        <option value="Exo 2">Exo 2 (Czytelna)</option>
+                        <option value="Arial" selected>Arial (Standard)</option>
+                        <option value="Courier New">Courier New (Monospace)</option>
+                    </select>
+                    
+                    <div class="checkbox-item" style="margin-top: 10px;">
+                        <input type="checkbox" id="boldFont">
+                        <label for="boldFont">Pogrubienie czcionki killfeeda</label>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="downloadSize">Rozmiar pobieranego obrazu:</label>
+                    <select id="downloadSize">
+                        <option value="1">Oryginalny (1x)</option>
+                        <option value="2" selected>Wysoka jakość (2x)</option>
+                        <option value="3">Bardzo wysoka jakość (3x)</option>
+                        <option value="4">Ultra jakość (4x)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="preview">
+                <h2 class="preview-title">Podgląd Killfeeda <span id="previewKillfeedNumber">1</span></h2>
+                <div id="killfeedPreview">
+                    <!-- Tutaj będzie renderowany podgląd killfeeda -->
+                    <div class="killFeed" style="font-family: Arial, sans-serif;">
+                        <a href="" class="killerCT">Zabójca</a>
+                        <div class="weapon ak47"></div>
+                        <a href="" class="killedTT">Ofiara</a>
+                    </div>
+                </div>
+                
+                <div class="download-buttons">
+                    <button id="downloadCurrentKillfeed" class="download-btn">Pobierz Aktualny Killfeed</button>
+                    <button id="downloadMultipleKillfeeds" class="download-btn download-multiple">Pobierz Wybrane Killfeedy</button>
+                    <button id="downloadAllKillfeeds" class="download-btn download-all">Pobierz Wszystkie Killfeedy</button>
+                </div>
+                
+                <div class="download-options" id="downloadOptions" style="display: none;">
+                    <h3>Wybierz killfeedy do pobrania:</h3>
+                    <div class="killfeed-checkboxes">
+                        <label><input type="checkbox" value="1" checked> Killfeed 1</label>
+                        <label><input type="checkbox" value="2"> Killfeed 2</label>
+                        <label><input type="checkbox" value="3"> Killfeed 3</label>
+                        <label><input type="checkbox" value="4"> Killfeed 4</label>
+                        <label><input type="checkbox" value="5"> Killfeed 5</label>
+                    </div>
+                    <button id="confirmDownload" class="download-btn">Pobierz Wybrane</button>
+                </div>
+                
+                <div class="preview-info">
+                    <p>Killfeed zostanie automatycznie zaktualizowany po każdej zmianie ustawień</p>
+                    <p>Ustawienia są automatycznie zapisywane na 5 minut</p>
+                    <p>Pobierany obraz będzie identyczny z podglądem 1:1</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Generator Killfeed CS:GO 2025 &copy; | Nowoczesny design z opcjami personalizacji</p>
+        </footer>
+    </div>
+
+    <!-- Dodanie html2canvas z CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
