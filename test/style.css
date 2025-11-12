@@ -1,0 +1,673 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #00c4ff;
+    --primary-dark: #1a1a2e;
+    --secondary-dark: #252542;
+    --accent-blue: #0099cc;
+    --text-white: #f0f0f0;
+    --ct-color: #5b9aff;
+    --tt-color: #ffcc33;
+    --success: #00cc99;
+    --danger: #ff3366;
+    --warning: #ffaa00;
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    background: var(--primary-dark);
+    color: var(--text-white);
+    padding: 15px;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: var(--secondary-dark);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 196, 255, 0.2);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-white);
+    margin-bottom: 8px;
+    font-weight: 300;
+}
+
+.killfeed-selector {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: var(--secondary-dark);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 196, 255, 0.1);
+}
+
+.killfeed-selector h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.killfeed-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.killfeed-tab {
+    background: rgba(30, 30, 46, 0.7);
+    color: var(--text-white);
+    border: 1px solid rgba(0, 196, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    flex: 1;
+    max-width: 150px;
+    text-align: center;
+}
+
+.killfeed-tab:hover {
+    background: rgba(0, 196, 255, 0.1);
+    border-color: var(--primary-blue);
+}
+
+.killfeed-tab.active {
+    background: var(--primary-blue);
+    color: #000;
+    font-weight: 700;
+}
+
+.copy-paste-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.copy-btn, .paste-btn {
+    background: rgba(30, 30, 46, 0.7);
+    color: var(--text-white);
+    border: 1px solid rgba(0, 196, 255, 0.3);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    flex: 1;
+    max-width: 200px;
+}
+
+.copy-btn:hover {
+    background: var(--warning);
+    color: #000;
+}
+
+.paste-btn:hover {
+    background: var(--success);
+    color: #000;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.controls {
+    flex: 1;
+    min-width: 320px;
+    background: var(--secondary-dark);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 196, 255, 0.1);
+}
+
+.preview {
+    flex: 1;
+    min-width: 320px;
+    background: var(--secondary-dark);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 196, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.control-group {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 196, 255, 0.1);
+}
+
+.control-group:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#currentKillfeedNumber, #previewKillfeedNumber {
+    color: var(--text-white);
+    background: rgba(0, 196, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-white);
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(30, 30, 46, 0.7);
+    border: 1px solid rgba(0, 196, 255, 0.3);
+    border-radius: 5px;
+    color: var(--text-white);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+}
+
+input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(0, 196, 255, 0.2);
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(30, 30, 46, 0.5);
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 196, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.checkbox-item:hover {
+    border-color: var(--primary-blue);
+    background: rgba(0, 196, 255, 0.05);
+}
+
+.checkbox-item input {
+    width: auto;
+    margin: 0;
+}
+
+.download-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.download-btn {
+    background: var(--primary-blue);
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    width: 100%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.download-btn:hover {
+    background: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+.download-btn:active {
+    transform: translateY(1px);
+}
+
+.download-multiple {
+    background: var(--warning);
+}
+
+.download-multiple:hover {
+    background: #e69900;
+}
+
+.download-all {
+    background: var(--success);
+}
+
+.download-all:hover {
+    background: #00b386;
+}
+
+.download-options {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(30, 30, 46, 0.7);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 196, 255, 0.2);
+}
+
+.download-options h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.killfeed-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.killfeed-checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background 0.2s ease;
+}
+
+.killfeed-checkboxes label:hover {
+    background: rgba(0, 196, 255, 0.1);
+}
+
+.killfeed-checkboxes input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.preview-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-blue);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* CSS dla killfeed z zadania - POPRAWIONE DLA POBRANIA 1:1 */
+a {
+    text-decoration: none;
+}
+
+.killFeed {
+    margin-top: 15px;
+    min-width: 100px;
+    position: relative;
+    display: inline-block;
+    height: 39px;
+    background: #00070d;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    /* Usunięto transform: scale, aby pobieranie było 1:1 */
+}
+
+.killFeedDead {
+    margin-top: 15px;
+    min-width: 100px;
+    position: relative;
+    display: inline-block;
+    height: 37px;
+    background: #8B0000;
+    border-radius: 6px;
+    padding: 0 10px;
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    /* Usunięto transform: scale, aby pobieranie było 1:1 */
+}
+
+.killerCT {
+    color: var(--ct-color);
+    line-height: 39px;
+    display: inline-block;
+    margin-right: 10px;
+    float: left;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.killerTT {
+    color: var(--tt-color);
+    line-height: 39px;
+    display: inline-block;
+    margin-right: 10px;
+    float: left;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.killedTT {
+    margin-left: -2px;
+    color: var(--tt-color);
+    line-height: 39px;
+    display: inline-block;
+    float: left;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.killedCT {
+    margin-left: -2px;
+    color: var(--ct-color);
+    line-height: 39px;
+    display: inline-block;
+    float: left;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Style dla pogrubionej czcionki killfeeda */
+.bold-killfeed .killerCT,
+.bold-killfeed .killerTT,
+.bold-killfeed .killedCT,
+.bold-killfeed .killedTT {
+    font-weight: 900;
+    text-shadow: 0 0 2px currentColor;
+}
+
+.weapon {
+    float: left;
+}
+
+.weapon.tec9 {
+    margin: 7px 0 0 -18px;
+    height: 26px;
+    width: 80px;
+    background: url(https://i.imgur.com/r9c3iUI.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.deagle {
+    margin: 6px 0 0 -18px;
+    height: 26px;
+    width: 80px;
+    background: url(https://i.imgur.com/HOVQ8Jk.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.m4a1s {
+    margin: 7px 8px 0 0;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/Z1YR04z.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.galil {
+    margin: 7px 8px 0 0;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/CiqqMAZ.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.seven {
+    margin: 7px 16px 0 0;
+    height: 25px;
+    width: 36px;
+    background: url(https://i.imgur.com/eHov88Z.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.ak47 {
+    margin: 7px 8px 0 0;
+    height: 25px;
+    width: 88px;
+    background: url(http://i.imgur.com/fZlAs4p.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.famas {
+    margin: 7px 8px 0 0;
+    height: 25px;
+    width: 70px;
+    background: url(https://i.imgur.com/ZGeKmW2.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.m4a4 {
+    margin: 5px 8px 0 0;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/0D6YVWy.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.usp {
+    margin: 7px 0 0 -10px;
+    height: 25px;
+    width: 80px;
+    background: url(http://i.imgur.com/dT1EGjU.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.bfly {
+    margin: 7px 0 0 0;
+    height: 30px;
+    width: 80px;
+    background: url(https://i.imgur.com/SpuRMUg.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.knifect {
+    margin: 7px 0 0 0;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/bhzclsQ.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.hegrenade {
+    margin: 4px 7px 0px -3px;
+    height: 25px;
+    width: 25px;
+    background: url(https://i.imgur.com/GHMU1fp.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.fire {
+    margin: 7px 0 0 0;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/fMJt6CO.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.glock {
+    margin: 7px -8px 0 -24px;
+    height: 25px;
+    width: 80px;
+    background: url(https://i.imgur.com/oGoKoAT.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.p250 {
+    margin: 6px 4px 8px -2px;
+    height: 29px;
+    width: 39px;
+    background: url(https://i.imgur.com/zCq4FjH.png) no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.weapon.awp {
+    margin: 7px 16px 0 0;
+    height: 25px;
+    width: 80px;
+    background: url("http://i.imgur.com/i5Euh7o.png") no-repeat;
+    background-size: cover;
+    float: left;
+}
+
+.hs{
+    margin: 7px 4px 0 0;
+    height: 28px;
+    width: 28px;
+    background-image: url(https://i.imgur.com/Wmzf4nL_d.webp?maxwidth=760&fidelity=grand);
+    background-size: cover;
+    float: left;
+}
+
+.smoke{
+    margin: 1px 12px 0px 0px;
+    height: 36px;
+    width: 36px;
+    background-image: url(https://i.imgur.com/dq4Xqua.png);
+    background-size: cover;
+    float: left;
+}
+
+.wallbang {
+    margin: 5px 6px 0 0;
+    height: 28px;
+    width: 28px;
+    background: url(https://i.imgur.com/OsKtcbP.png);
+    background-size: cover;
+    float: left;
+}
+
+.noscope {
+    margin: 5px 6px 0 -12px;
+    height: 28px;
+    width: 28px;
+    background: url(https://i.imgur.com/9f6HQOS.png);
+    background-size: cover;
+    float: left;
+}
+
+.preview-info {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--text-white);
+    font-size: 0.85rem;
+    padding: 12px;
+    background: rgba(30, 30, 46, 0.5);
+    border-radius: 5px;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 196, 255, 0.2);
+    color: var(--text-white);
+    font-size: 0.85rem;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .controls, .preview {
+        min-width: 100%;
+    }
+    
+    .killfeed-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .killfeed-tab {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .copy-paste-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .copy-btn, .paste-btn {
+        max-width: 100%;
+        width: 100%;
+    }
+}
